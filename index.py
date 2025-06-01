@@ -51,7 +51,7 @@ elif choix == 'film pour adulte':
         right.write(variable_test)
 elif choix == 'le casting':
     st.markdown(f"Vous avez choisi **{choix}** 🌎")
-    df = pd.read_csv("intervenant_tmdb_find_by_ID_1950_r5.csv")
+    df = pd.read_csv("data_movies_details.csv")
     for i in range(3):
         left, middle, right = st.columns(3, border=True)
 #       variable_1 = "https://image.tmdb.org/t/p/original"+(df.profile_path[i])
