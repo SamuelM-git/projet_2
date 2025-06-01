@@ -19,7 +19,7 @@ st.title("Pick up a film")
 #st.markdown(''':rainbow: :rainbow[My markdown]''')  # Ici, un effet arc-en-ciel est appliqué
 
 # Affiche un dataframe (st.write accepte plusieurs arguments et plusieurs types de données)
-df_movies = pd.read_csv("projet_2\\films_final.csv")
+df_movies = pd.read_csv("films_final.csv")
 st.write(df_movies
     
     )
