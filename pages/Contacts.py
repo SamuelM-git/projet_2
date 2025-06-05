@@ -1,9 +1,9 @@
 # Nos packages
 import streamlit as st
 from datetime import datetime
-#from PIL import Image # il sert à ouvrir les images dans streamlit
+from PIL import Image # il sert à ouvrir les images dans streamlit
 import pandas as pd
-#import os # gérer des fichiers et des chemins dans mon ordi.  il sert de vérifier un fichier existant, créer des dossiers
+import os # gérer des fichiers et des chemins dans mon ordi.  il sert de vérifier un fichier existant, créer des dossiers
 
 # la page de contact de notre application streamlit
 
@@ -11,8 +11,8 @@ import pandas as pd
 left_co, cent_co,last_co = st.columns(3)
 with cent_co:
     # le chemin de l'image de notre logo
-    #logo = Image.open(r"assets\image SAPEM.png") 
-    #st.image(logo, width=150) # paramètre du logo
+    logo = Image.open(r"assets\image SAPEM.png") 
+    st.image(logo, width=150) # paramètre du logo
 #-------En-tête avec bouton à droite et Titre principal de l'application (affiché en haut de la page)
 
 # --- Initialisation de l'état ---
