@@ -2,13 +2,13 @@ import streamlit as st
 import pandas as pd
 import requests
 
-df_inter = pd.read_csv('data/intervenantes_final.csv')
+df_inter = pd.read_csv('projet_2\data\intervenantes_final.csv')
 
 # Show the dataframe to explorer
-#st.write(df_inter)
+st.write(df_inter)
 
 #Variable persona chose the intervenant
-persona = "nm0000003"
+persona = st.session_state.selected_intervenant
 df_inter = df_inter[df_inter['nconst'] == persona]
 
 

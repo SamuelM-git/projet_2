@@ -8,8 +8,11 @@ import os # gérer des fichiers et des chemins dans mon ordi.  il sert de vérif
 # la page de contact de notre application streamlit
 
 #--------------------mettre le logo
-logo = Image.open(r"E:\STREAMLIT_PROJET2_FINAL\projet_2\pages\assets\image SAPEM.png")  # le chemin de l'image de notre logo
-st.image(logo, width=50) # paramètre du logo
+left_co, cent_co,last_co = st.columns(3)
+with cent_co:
+    # le chemin de l'image de notre logo
+    logo = Image.open(r"projet_2\assets\image SAPEM.png") 
+    st.image(logo, width=150) # paramètre du logo
 #-------En-tête avec bouton à droite et Titre principal de l'application (affiché en haut de la page)
 
 # --- Initialisation de l'état ---
@@ -25,98 +28,80 @@ if "message" not in st.session_state:
     st.session_state.message = ""
 # -----------En-tête-----------------------------
 st.title("🎬 Contactez l'équipe") # le titre de notre formulaire
+# --- Affichage titres ---
+
+st.markdown('<div class="title">Contactez-nous</div>', unsafe_allow_html=True)
+st.markdown('<div class="subtitle">SAPEM CONSEIL - Experts en stratégie et données</div>', unsafe_allow_html=True)
+
+
 
 # nous avons créer les colonnes pour mettre le bouton à droite car nous n'utilisaons pas html dans streamlit
-# -----------colonne titre + bouton ----------------
+#----------------- Pop up menssage ------------------
+@st.dialog("Contactez-nous")
+def show_contact_form():
+    # -----------------------------style CSS du popup
+    st.markdown(
+        """
+        <style>
+        .popup-style {
+            background-color: #f0f2f6;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+            margin-top: 50px;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True  
+                )
+    #--------------------------------------------
+ 
+ 
+    # --- Affichage du formulaire popup si bouton cliqué ---
+    # centrons avec les colonnes 
+    st.markdown('<div class="popup-style">', unsafe_allow_html=True)
+    with st.form(key="formulaire_popup"):
+        st.markdown("### 📝 Envoyer un message")
+        st.session_state.nom = st.text_input("Nom", value=st.session_state.nom)
+        st.session_state.email = st.text_input("Email", value=st.session_state.email)
+        st.session_state.message = st.text_area("Message", value=st.session_state.message)
 
-col1, col2 = st.columns([5,3]) # nous ajustons les largeurs, plus large à gauche pour le titre
-#--------------Création du bouton pour afficher le formulaire
+        submit = st.form_submit_button("Envoyer")
 
-with col2:
-    if st.button("📬 Écrire un message"):
-        st.session_state["popup_active"] = True
-# ---------------------------------------------------
-
-# -----------------------------style CSS du popup
-
-st.markdown(
-    """
-    <style>
-    .popup-style {
-        background-color: #f0f2f6;
-        padding: 2rem;
-        border-radius: 1rem;
-        box-shadow: 0 0 20px rgba(0,0,0,0.2);
-        margin-top: 50px;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True  
-            )
-#--------------------------------------------
-# --- Affichage du formulaire popup si bouton cliqué ---
-# conteneur centré pour simuler un po-up car streamlit ne fait pas de popup comme sur java script ou html
-
-if st.session_state["popup_active"]:
-
-# centrons avec les colonnes 
-    col_empty, col_popup, col_empty2 = st.columns([1,2,1])
-    with col_popup:
-        st.markdown('<div class="popup-style">', unsafe_allow_html=True)
-        with st.form(key="formulaire_popup"):
-            st.markdown("### 📝 Envoyer un message")
-            st.session_state.nom = st.text_input("Nom", value=st.session_state.nom)
-            st.session_state.email = st.text_input("Email", value=st.session_state.email)
-            st.session_state.message = st.text_area("Message", value=st.session_state.message)
-
-            submit = st.form_submit_button("Envoyer")
-
-            if submit:
-                # si envoyer, enrégistrer les informations dans le CSV
-                 if st.session_state.nom and st.session_state.email and st.session_state.message:
-                    nouvelle_ligne = {
-                        "date": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-                        "nom": st.session_state.nom,
-                        "email": st.session_state.email,
-                        "message": st.session_state.message
-                    }
+        if submit:
+            # si envoyer, enrégistrer les informations dans le CSV
+            if st.session_state.nom and st.session_state.email and st.session_state.message:
+                nouvelle_ligne = {
+                    "date": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+                    "nom": st.session_state.nom,
+                    "email": st.session_state.email,
+                    "message": st.session_state.message
+                }
 # ---------------------stockons les informations dans un csv
-                    #dossier_csv = "data\Contacts.csv"
-                    fichier_csv = os.path.join("Contacts.csv")
-                    if not os.path.exists(fichier_csv):
-                        #os.makedirs(dossier_csv)
-                        pd.DataFrame(columns=["date", "nom", "email", "message"]).to_csv(fichier_csv, index=False)
+                #dossier_csv = "data\Contacts.csv"
+                fichier_csv = os.path.join("projet_2\data\Contacts.csv")
+                if not os.path.exists(fichier_csv):
+                    #os.makedirs(dossier_csv)
+                    pd.DataFrame(columns=["date", "nom", "email", "message"]).to_csv(fichier_csv, index=False)
 
-                    df = pd.read_csv(fichier_csv)
-                    df = pd.concat([df, pd.DataFrame([nouvelle_ligne])], ignore_index=True)
-                    df.to_csv(fichier_csv, index=False)
+                df = pd.read_csv(fichier_csv)
+                df = pd.concat([df, pd.DataFrame([nouvelle_ligne])], ignore_index=True)
+                df.to_csv(fichier_csv, index=False)
 
-                    st.success("✅ Merci pour votre message !")
-                
+                st.success("✅ Merci pour votre message !")
+            
 #------------------------------------Réinitialiser les champs
-                    st.session_state.nom = ""
-                    st.session_state.email = ""
-                    st.session_state.message = ""
-#-------------------fermer le formulaire -------------
-                
-                    st.session_state["popup_active"] = False # Masquer le formulaire après avoir envoyé
-        
-                # Fermer le formulaire et revenir à la page principale
-                    st.rerun()
-                # sinon affiche un message d'erreur
-            else:
-                    st.warning("⚠️ Merci de remplir tous les champs.")
-        st.markdown('</div>', unsafe_allow_html=True)
+                st.session_state.nom = ""
+                st.session_state.email = ""
+                st.session_state.message = ""
+
+            # sinon affiche un message d'erreur
+        else:
+                st.warning("⚠️ Merci de remplir tous les champs.")
+    st.markdown('</div>', unsafe_allow_html=True)
 
 # ----------------------------------------------
 
-
-
-# --------------Titre du formulaire ---------------------------
-with col1:
-    st.markdown("###" )  # espace pour le titre
-
-# -----------------------    
 
 # ---------------------------------------
 st.write("""
@@ -133,81 +118,32 @@ N'hésitez pas à nous contacter !
          
 """)
 # --------------------------------------
-# --- Affichage titres ---
+st.divider()
 
-st.markdown('<div class="title">Contactez-nous</div>', unsafe_allow_html=True)
-st.markdown('<div class="subtitle">SAPEM CONSEIL - Experts en stratégie et données</div>', unsafe_allow_html=True)
+# -----------colonne titre + bouton ----------------
 
+col1, col2, col3 = st.columns([2,3,1]) # nous ajustons les largeurs, plus large à gauche pour le titre
+#--------------Création du bouton pour afficher le formulaire
+with col2:
+    if st.button("📬 Écrire un message"):
+        show_contact_form()
+        
+# ---------------------------------------------------
+with col3:
+    st.markdown("")
+# --------------Titre du formulaire ---------------------------
+with col1:
+    st.markdown("###" )  # espace pour le titre
+
+# -----------------------  
 # ------------------------------
 st.markdown("---")
 # -------------------------------------------------------
-# ------ pour le remplissage du formulaire de contact principale----------------
 
 
-#---------------affichage du formulaire--------------------
-st.markdown("### 📝 Laissez-nous un message")
 
-with st.form("formulaire_contact"):
-    nom = st.session_state.nom = st.text_input("Nom", value=st.session_state.nom)
-    email = st.session_state.email = st.text_input("Email", value=st.session_state.email)
-    message = st.session_state.message = st.text_area("Message", value=st.session_state.message)
+  
 
-    bouton_envoyer = st.form_submit_button("Envoyer")
-
-    if bouton_envoyer:
-        if nom and email and message:
-            st.success("✅ Merci pour votre message! Nous vous répondrons rapidement.")
-           # (nous allons enrégistrer dans un CSV ici)
-        else:
-            st.warning("⚠️ Merci de remplir tous les champs avant d'envoyer.")
-
-# ----------------------------------------
-
-# --------------pour stocker chaque message envoyer dans un csv----------
-if bouton_envoyer:
-        if nom and email and message: # si l'utilisateur a cliqué sur le bouton envoyé après avoir tout bien rempli les espaces demandées
-            # Préparer les données
-            date_envoi = datetime.now().strftime("%Y-%m-%d %H:%M:%S") # la date du jour
-            nouvelle_ligne = {
-                "date": date_envoi,
-                "nom": nom,
-                "email": email,
-                "message": message
-            }
-
-            # Créons le fichier s'il n'existe pas
-              
-            fichier_csv = os.path.join("Contacts.csv")
-            if not os.path.exists(fichier_csv):
-                
-                df_init = pd.DataFrame(columns=["date", "nom", "email", "message"])
-                df_init.to_csv(fichier_csv, index=False)
-
-            # Ajoutons la ligne au fichier
-            df = pd.read_csv(fichier_csv)
-            df = pd.concat([df, pd.DataFrame([nouvelle_ligne])], ignore_index=True)
-            df.to_csv(fichier_csv, index=False)
-
-#-------------------------------
-#--------- Réinitialisation des champs
-            st.session_state["nom"] = ""
-            st.session_state["email"] = ""
-            st.session_state["message"] = ""
-#-------------------------------------------------------
-
-# ----------------------Infos de contact avec icônes
-st.markdown("""
-### 📧 Email  
-contact@sapemconseil.com
-
-### 📞 Téléphone  
-+33 1 00 00 00 00
-
-### 📍 Adresse  
-15 rue 3 Fontaines 70240 La Creuse   
-""")
-
-#---------------------------------------------
 
 # --- bas de page ---
 st.markdown('<div class="footer">© 2025 SAPEM CONSEIL. Tous droits réservés.</div>', unsafe_allow_html=True)
