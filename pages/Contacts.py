@@ -79,7 +79,7 @@ def show_contact_form():
                 }
 # ---------------------stockons les informations dans un csv
                 #dossier_csv = "data\Contacts.csv"
-                fichier_csv = os.path.join("projet_2\data\Contacts.csv")
+                fichier_csv = os.path.join("data\Contacts.csv")
                 if not os.path.exists(fichier_csv):
                     #os.makedirs(dossier_csv)
                     pd.DataFrame(columns=["date", "nom", "email", "message"]).to_csv(fichier_csv, index=False)
