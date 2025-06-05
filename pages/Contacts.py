@@ -81,10 +81,10 @@ if st.session_state["popup_active"]:
                         "message": st.session_state.message
                     }
 # ---------------------stockons les informations dans un csv
-                    dossier_csv = "data_contacts"
-                    fichier_csv = os.path.join(dossier_csv,"Contacts.csv")
-                    if not os.path.exists(dossier_csv):
-                        os.makedirs(dossier_csv)
+                    #dossier_csv = "data\Contacts.csv"
+                    fichier_csv = os.path.join("Contacts.csv")
+                    if not os.path.exists(fichier_csv):
+                        #os.makedirs(dossier_csv)
                         pd.DataFrame(columns=["date", "nom", "email", "message"]).to_csv(fichier_csv, index=False)
 
                     df = pd.read_csv(fichier_csv)
@@ -176,10 +176,10 @@ if bouton_envoyer:
             }
 
             # Créons le fichier s'il n'existe pas
-            dossier_csv = "data_contacts"
-            fichier_csv = os.path.join(dossier_csv,"Contacts.csv")
-            if not os.path.exists(dossier_csv):
-                os.makedirs(dossier_csv)
+              
+            fichier_csv = os.path.join("Contacts.csv")
+            if not os.path.exists(fichier_csv):
+                
                 df_init = pd.DataFrame(columns=["date", "nom", "email", "message"])
                 df_init.to_csv(fichier_csv, index=False)
 
