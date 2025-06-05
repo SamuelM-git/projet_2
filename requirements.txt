@@ -27,12 +27,12 @@ st-ant-carousel
 
 # pour installer les images dans streamlit
 # pip install 
-pillow
+#pillow
 # importe la classe image depuis le module PIL (Python Imaging Library). il sert à  ouvrir et afficher des images dans l'application Streamlit.
 # from PIL import Image 
-PIL
+#PIL
 # permet de gérer les fichiers et les chemins dans mon ordi. Ce module  permet d’interagir avec un système de fichiers (Windows, Mac, Linux).
 # pip install os
 # import os
-os
+#os
 
