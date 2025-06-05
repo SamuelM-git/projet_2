@@ -3,7 +3,7 @@ import streamlit as st
 from datetime import datetime
 #from PIL import Image # il sert à ouvrir les images dans streamlit
 import pandas as pd
-import os # gérer des fichiers et des chemins dans mon ordi.  il sert de vérifier un fichier existant, créer des dossiers
+#import os # gérer des fichiers et des chemins dans mon ordi.  il sert de vérifier un fichier existant, créer des dossiers
 
 # la page de contact de notre application streamlit
 
