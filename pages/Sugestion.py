@@ -6,7 +6,7 @@ import streamlit as st
 st.title("Choisi un filme")
 
 #Load data frame and show if needed:
-df_movies = pd.read_csv("films_final.csv")
+df_movies = pd.read_csv("projet_2/data/films_final.csv")
 #st.write(df_movies)
 dummies = df_movies.genres.str.get_dummies(sep=',').drop(columns="Comedy")
 genres = dummies.columns.to_list()
@@ -127,7 +127,7 @@ test_items = [
     ),
 ]
 #Carrousel parameters:
-carousel(items=test_items, container_height=800)
+carousel(items=test_items, container_height=810)
 
 
 
