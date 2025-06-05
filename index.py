@@ -23,7 +23,7 @@ st.title("🏠 ACTUELLEMENT EN SALLE 🌎")
 
 # XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 # Code pour telecharger le fichier csv
-df = pd.read_csv("projet_2\data\data_movies_details.csv")
+df = pd.read_csv("data/data_movies_details.csv")
 
 # On recupere les elements unique de la colonne pour les proposer en selection
 sentiment_mapping = ["film pour enfant", "film pour adulte", "le casting"]
