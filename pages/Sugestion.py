@@ -140,6 +140,3 @@ test_items = [
 ]
 # Carrousel parameters:
 carousel(items=test_items, container_height=810)
-
-
-
