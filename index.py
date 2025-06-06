@@ -2,6 +2,13 @@
 import streamlit as st
 import pandas as pd
 import datetime
+# from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler  # , MinMaxScaler
+from sklearn.neighbors import NearestNeighbors
+# Search box need to pip install streamlit_searchbox
+# Makes a search box for title de filme
+from streamlit_searchbox import st_searchbox
+from streamlit_carousel import carousel
 
 # XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 # Le temps
