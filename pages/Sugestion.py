@@ -222,7 +222,6 @@ with col1:
     if st.button(f"{title2}"):
         st.session_state.selected_intervenant = tconts2
         st.switch_page("pages/film.py")
-    st.write(tconts2)
 with col2:
     if st.button(f'{title3}'):
         st.session_state.selected_intervenant = tconts3
