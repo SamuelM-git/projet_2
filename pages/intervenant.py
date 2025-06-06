@@ -34,9 +34,9 @@ else:
     dead = "."
 
 if df_inter['place_of_birth'].iloc[0] == "inconnue":
-    place = "dans la ville " + df_inter['place_of_birth'].iloc[0]
-else:
     place = "dans une ville " + df_inter['place_of_birth'].iloc[0]
+else:
+    place = "dans la ville de " + df_inter['place_of_birth'].iloc[0]
 
 
 texte = (f"""{df_inter['primaryName'].iloc[0]}, 
