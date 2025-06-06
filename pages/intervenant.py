@@ -8,6 +8,11 @@ df_inter = pd.read_csv('data/intervenantes_final.csv')
 st.write(df_inter)
 
 #Variable persona chose the intervenant
+name = st.query_params.get("name", None)
+
+if name:
+    st.session_state["selected_intervenant"] = name
+
 if "selected_intervenant" not in st.session_state:
     st.session_state["selected_intervenant"] = "nm0000091"
 
