@@ -81,12 +81,19 @@ if st.session_state["popup_active"]:
                         "message": st.session_state.message
                     }
 # ---------------------stockons les informations dans un csv
-                    #dossier_csv = "data\Contacts.csv"
-                    fichier_csv = os.path.join("Contacts.csv")
+                    
+                    # Définir le chemin du dossier
+                    dossier_contact = os.path.join("projet_2\data", "data_contact")
+                    os.makedirs(dossier_contact, exist_ok=True)  # Crée le dossier s'il n'existe pas
+
+                    # Définir le chemin complet du fichier CSV 
+                    fichier_csv = os.path.join(dossier_contact, "Contacts.csv")
+
+                    # Créer le fichier s'il n'existe pas
                     if not os.path.exists(fichier_csv):
-                        #os.makedirs(dossier_csv)
                         pd.DataFrame(columns=["date", "nom", "email", "message"]).to_csv(fichier_csv, index=False)
 
+                    # Ajouter la nouvelle ligne
                     df = pd.read_csv(fichier_csv)
                     df = pd.concat([df, pd.DataFrame([nouvelle_ligne])], ignore_index=True)
                     df.to_csv(fichier_csv, index=False)
@@ -174,16 +181,20 @@ if bouton_envoyer:
                 "email": email,
                 "message": message
             }
-
-            # Créons le fichier s'il n'existe pas
+#----------------------- Créons le fichier s'il n'existe pas
               
-            fichier_csv = os.path.join("Contacts.csv")
-            if not os.path.exists(fichier_csv):
-                
-                df_init = pd.DataFrame(columns=["date", "nom", "email", "message"])
-                df_init.to_csv(fichier_csv, index=False)
+                  # ----------Définir le chemin du dossier
+            dossier_contact = os.path.join("projet_2\data", "data_contact")
+            os.makedirs(dossier_contact, exist_ok=True)  # Crée le dossier s'il n'existe pas
 
-            # Ajoutons la ligne au fichier
+            # Définir le chemin complet du fichier CSV 
+            fichier_csv = os.path.join(dossier_contact, "Contacts.csv")
+
+            # -----------------Créer le fichier s'il n'existe pas
+            if not os.path.exists(fichier_csv):
+                pd.DataFrame(columns=["date", "nom", "email", "message"]).to_csv(fichier_csv, index=False)
+
+            # Ajouter la nouvelle ligne
             df = pd.read_csv(fichier_csv)
             df = pd.concat([df, pd.DataFrame([nouvelle_ligne])], ignore_index=True)
             df.to_csv(fichier_csv, index=False)
