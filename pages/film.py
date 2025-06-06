@@ -19,6 +19,3 @@ df_inter = df_movies[df_movies['tconst'] == tconst]
 
 
 st.header(df_movies['title'].iloc[0], divider="green")
-
-
-st.switch_page("movies")
