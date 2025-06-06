@@ -9,7 +9,7 @@ import pandas as pd
 left_co, cent_co,last_co = st.columns(3)
 with cent_co:
     # le chemin de l'image de notre logo 
-    logo = "assets/image SAPEM.png"
+    logo = "projet_2/assets/image SAPEM.png"
     st.image(logo, width=150) # paramètre du logo
 #-------En-tête avec bouton à droite et Titre principal de l'application (affiché en haut de la page)
 
@@ -51,7 +51,7 @@ def show_contact_form():
         </style>
         """,
         unsafe_allow_html=True  
-                )
+    )
     #--------------------------------------------
  
  
@@ -77,27 +77,32 @@ def show_contact_form():
                 }
 # ---------------------stockons les informations dans un csv
                 #dossier_csv = "data\Contacts.csv"
-                fichier_csv = 'data/Contacts.csv'
-                df = pd.read_csv(fichier_csv)
+                fichier_csv = 'projet_2\data\Contacts.csv'
+                # créer le fichier s'il n'existe pas encore
+                try:
+                    df = pd.read_csv(fichier_csv)
+                except FileNotFoundError:
+                    df = pd.DataFrame([nouvelle_ligne])
+                    df.to_csv(fichier_csv, index=False)
+                # ajouter la nouvelle ligne
                 df = pd.concat([df, pd.DataFrame([nouvelle_ligne])], ignore_index=True)
                 df.to_csv(fichier_csv, index=False)
-
+                 # valider si le message a été bien envoyer   
                 st.success("✅ Merci pour votre message !")
                 
                 st.session_state.nom = ""
                 st.session_state.email = ""
                 st.session_state.message = ""
+                    # Masquer le formulaire après avoir envoyé                            
+                st.session_state["popup_active"] = False 
+            
+            # sinon affiche un message d'erreur
             else:
                 st.warning("⚠️ Merci de remplir tous les champs.")
-    # Masquer le formulaire après avoir envoyé                            
-                st.session_state["popup_active"] = False 
+
     #------------------------------------Réinitialiser les champs
 
-
-            # sinon affiche un message d'erreur
-        else:
-            st.warning("⚠️ Merci de remplir tous les champs.")
-    st.markdown('</div>', unsafe_allow_html=True)
+st.markdown('</div>', unsafe_allow_html=True)
 
 # ----------------------------------------------
 
