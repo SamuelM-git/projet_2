@@ -5,7 +5,7 @@ import requests
 df_inter = pd.read_csv('data/intervenantes_final.csv')
 
 # Show the dataframe to explorer
-st.write(df_inter)
+# st.write(df_inter)
 
 #Variable persona chose the intervenant
 name = st.query_params.get("name", None)
