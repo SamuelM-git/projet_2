@@ -4,7 +4,7 @@ import datetime
 
 # New page
 # Titre principal de l'application (affiché en haut de la page)
-st.title("ADULTES")
+st.title("ADULTES via git")
 
 # Les pages :
 with st.container():
