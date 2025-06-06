@@ -29,7 +29,7 @@ col1.image(df_inter['profile_photo'].iloc[0])
 #Col2 intervenant
 #Preparation text to descrive intervenant
 if df_inter['deathYear'].isna == True:
-    dead = "Elle est décédée le " + {int(df_inter['deathYear'].iloc[0])} + "."
+    dead = " Elle est décédée le " + {int(df_inter['deathYear'].iloc[0])} + "."
 else:
     dead = "."
 
@@ -41,7 +41,7 @@ else:
 
 texte = (f"""{df_inter['primaryName'].iloc[0]}, 
         né(e) le {int(df_inter['birthYear'].iloc[0])}
-        {place}, était un intervenante reconnue dans le domaine du {df_inter['known_for_department'].iloc[0]}. 
+        {place}, était un intervenante reconnue dans le domaine du {df_inter['known_for_department'].iloc[0]}
         {dead}""")
 
 
