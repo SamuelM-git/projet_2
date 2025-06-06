@@ -19,7 +19,7 @@ st.title("Pick up a film")
 #st.markdown(''':rainbow: :rainbow[My markdown]''')  # Ici, un effet arc-en-ciel est appliqué
 
 # Affiche un dataframe (st.write accepte plusieurs arguments et plusieurs types de données)
-df_movies = pd.read_csv("data/films_final.csv")
+df_movies = pd.read_csv("projet_2/data/films_final.csv")
 st.write(df_movies
     
     )
@@ -166,3 +166,12 @@ st_ant_carousel(
     vertical=False,
     adaptiveHeight=True
 )
+
+
+
+if st.button("nm0000003"):
+    st.session_state.selected_intervenant = "nm0000003"
+    st.switch_page("pages\intervenant.py")
+if st.button("nm0000079"):
+    st.session_state.selected_intervenant = "nm0000079"
+    st.switch_page("pages\intervenant.py")

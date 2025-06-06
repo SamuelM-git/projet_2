@@ -24,3 +24,7 @@ streamlit-Carousel
 #pip install st-ant-carousel
 st-ant-carousel
 #from st_ant_carousel import st_ant_carousel
+
+
+# pip install os
+# import os # permet de gérer les fichiers et les chemins dans mon ordi. Ce module  permet d’interagir avec un système de fichiers (Windows, Mac, Linux).

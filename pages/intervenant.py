@@ -5,10 +5,13 @@ import requests
 df_inter = pd.read_csv('data/intervenantes_final.csv')
 
 # Show the dataframe to explorer
-# st.write(df_inter)
+st.write(df_inter)
 
 # Variable persona chose the intervenant
-persona = "nm0000003"
+if "selected_intervenant" not in st.session_state:
+    st.session_state["selected_intervenant"] = "nm0000091"
+
+persona = st.session_state.selected_intervenant
 df_inter = df_inter[df_inter['nconst'] == persona]
 
 
@@ -26,20 +29,20 @@ col1.image(df_inter['profile_photo'].iloc[0])
 # Col2 intervenant
 # Preparation text to descrive intervenant
 if df_inter['deathYear'].isna is True:
-    dead = "Elle est décédée le " + {int(df_inter['deathYear'].iloc[0])} + "."
+    dead = " Elle est décédée le " + {int(df_inter['deathYear'].iloc[0])} + "."
 else:
     dead = "."
 
 if df_inter['place_of_birth'].iloc[0] == "inconnue":
-    place = "dans la ville " + df_inter['place_of_birth'].iloc[0]
-else:
     place = "dans une ville " + df_inter['place_of_birth'].iloc[0]
+else:
+    place = "dans la ville de " + df_inter['place_of_birth'].iloc[0]
 
 
 texte = (f"""{df_inter['primaryName'].iloc[0]},
         né(e) le {int(df_inter['birthYear'].iloc[0])}
         {place}, était un intervenante reconnue dans le domaine du {
-            df_inter['known_for_department'].iloc[0]}.
+            df_inter['known_for_department'].iloc[0]}
         {dead}""")
 
 
@@ -107,14 +110,14 @@ with tab2:
                 if posters:
                     result_poster.append(posters[0].get('url'))
                 else:
-                    result_poster.append("projet_2/assets/no_poster.jpg")
+                    result_poster.append("assets/no_poster.jpg")
             else:
                 result_title.append(title.get('primary_title'))
                 posters = title.get("posters")
                 if posters:
                     result_poster.append(posters[0].get('url'))
                 else:
-                    result_poster.append("projet_2/assets/no_poster.jpg")
+                    result_poster.append("assets/no_poster.jpg")
 
         # Show
         # st.write(f"films {result_title}")
