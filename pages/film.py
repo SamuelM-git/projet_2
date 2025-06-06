@@ -15,7 +15,7 @@ if film_id:
 tconst = st.session_state.get("selected_film")
 
 if tconst:
-    df_selected = df_movies[df_movies["tconst"] == tconst]
+    df_selected = df_movies[df_movies["tconst"].str.contains(tconst)]
 
     if not df_selected.empty:
         # Show the correct title
