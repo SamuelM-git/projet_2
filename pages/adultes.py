@@ -32,3 +32,11 @@ st.page_link("http://www.google.com", label="Google", icon="🌎")
 # https://docs.streamlit.io/develop/api-reference/widgets/st.date_input
 today = datetime.datetime.now()
 st.write("Aujoud'hui nous sommes le :", today)
+
+
+if st.button("nm0000003"):
+    st.session_state.selected_intervenant = "nm0000003"
+    st.switch_page("pages/intervenant.py")
+if st.button("nm0000079"):
+    st.session_state.selected_intervenant = "nm0000079"
+    st.switch_page("pages/intervenant.py")
