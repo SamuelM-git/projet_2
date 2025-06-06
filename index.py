@@ -19,7 +19,7 @@ middle.button("valider", use_container_width=True)
 # right.checkbox("Check me")
 st.write('___')
 # Titre principal de l'application (affiché en haut de la page)
-st.title("🏠 ACTUELLEMENT EN SALLE 🌎")
+st.title("🏠 ACTUELLEMENT EN SALLE - index projet-2")
 
 # XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 # Code pour telecharger le fichier csv
