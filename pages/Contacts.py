@@ -81,12 +81,13 @@ def show_contact_form():
                 # créer le fichier s'il n'existe pas encore
                 try:
                     df = pd.read_csv(fichier_csv)
+                    df = pd.concat([df, pd.DataFrame([nouvelle_ligne])], ignore_index=True)
                 except FileNotFoundError:
                     df = pd.DataFrame([nouvelle_ligne])
-                    df.to_csv(fichier_csv, index=False)
-                # ajouter la nouvelle ligne
-                df = pd.concat([df, pd.DataFrame([nouvelle_ligne])], ignore_index=True)
                 df.to_csv(fichier_csv, index=False)
+                # ajouter la nouvelle ligne
+                #df = pd.concat([df, pd.DataFrame([nouvelle_ligne])], ignore_index=True)
+                #df.to_csv(fichier_csv, index=False)
                  # valider si le message a été bien envoyer   
                 st.success("✅ Merci pour votre message !")
                 
