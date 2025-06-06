@@ -334,7 +334,7 @@ with tab2:
     url = "https://graph.imdbapi.dev/v1"
 
     # GraphQL query with variable
-    query = """
+    query =
     query exampleMultiTitleIDsx($ids: [String!]!) {
     titles(ids: $ids) {
         id
@@ -347,7 +347,7 @@ with tab2:
         }
     }
     }
-    """
+    
 
     # IDs from DataFrame
     imdb_ids = df_inter['knownForTitles'].iloc[0].split(',')
