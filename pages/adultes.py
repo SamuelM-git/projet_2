@@ -38,7 +38,7 @@ st.title("FILM")
 # XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 # Code pour telecharger les fichiers csv
 df_data_movies_details = pd.read_csv("data/data_movies_details.csv")
-df_film = pd.read_csv("data/filims_final.csv")
+df_film = pd.read_csv("data/films_final.csv")
 df_intervenant = pd.read_csv("data/intervenantes.csv")
 df_intervenant_1950 = pd.read_csv("data/intervenant_tmdb_find_by_ID_1950_r5.csv")
 
