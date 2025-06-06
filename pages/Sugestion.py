@@ -9,8 +9,8 @@ from streamlit_searchbox import st_searchbox
 from streamlit_carousel import carousel
 
 # Titre de la page
-st.title("Choisi votre film")
-st.write('Choisi votre filme favorite dans le genre comedie de production francaise')
+st.title("Choisir un film")
+st.write('Choisir votre filme favorite dans le genre comedie de production francaise')
 
 # Load data frame and show if needed:
 df_movies = pd.read_csv("data/films_final.csv")

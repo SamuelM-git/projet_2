@@ -29,6 +29,14 @@ df_inter = df_movies[df_movies['tconst'] == tconst]
 
 st.header(df_inter['title'].iloc[0], divider="green")
 
+if st.button("nm0000003"):
+    st.session_state.selected_intervenant = "nm0000003"
+    st.switch_page("pages/intervenant.py")
+if st.button("nm0000079"):
+    st.session_state.selected_intervenant = "nm0000079"
+    st.switch_page("pages/intervenant.py")
+
+st.divider()
 '''
 # -------- Get the film ID from the query params -------------
 film_id = st.query_params.get("name", [None])[0]
