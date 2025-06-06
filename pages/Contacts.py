@@ -78,7 +78,7 @@ def show_contact_form():
                 }
 # ---------------------stockons les informations dans un csv
                 #dossier_csv = "data\Contacts.csv"
-                fichier_csv = 'data\Contacts.csv'
+                fichier_csv = 'data/Contacts.csv'
                 df = pd.read_csv(fichier_csv)
                 df = pd.concat([df, pd.DataFrame([nouvelle_ligne])], ignore_index=True)
                 df.to_csv(fichier_csv, index=False)
