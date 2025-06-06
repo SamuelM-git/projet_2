@@ -37,30 +37,6 @@ if st.button("nm0000079"):
     st.switch_page("pages/intervenant.py")
 
 st.divider()
-'''
-# -------- Get the film ID from the query params -------------
-film_id = st.query_params.get("name", [None])[0]
-
-# -------- Set session state if the film_id is found ----------
-if film_id:
-    st.session_state["selected_film"] = film_id
-
-# -------- Lookup the film in the DataFrame ----------
-tconst = st.session_state.get("selected_film")
-
-if tconst:
-    df_selected = df_movies[df_movies["tconst"].str.contains(tconst)]
-
-    if not df_selected.empty:
-        # Show the correct title
-        st.header(df_selected["title"].iloc[0], divider="green")
-
-        # Optional: show more info
-        st.write(df_selected.iloc[0])
-    else:
-        st.warning("Film not found in the dataset.")
-else:
-    st.warning("No film ID provided in query parameters.")'''
 
 
 # XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
