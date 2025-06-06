@@ -9,7 +9,7 @@ import pandas as pd
 left_co, cent_co,last_co = st.columns(3)
 with cent_co:
     # le chemin de l'image de notre logo 
-    logo = "projet_2/assets/image SAPEM.png"
+    logo = "assets/image_sapem.png"
     st.image(logo, width=150) # paramètre du logo
 #-------En-tête avec bouton à droite et Titre principal de l'application (affiché en haut de la page)
 
