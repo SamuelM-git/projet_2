@@ -113,30 +113,24 @@ from st_ant_carousel import st_ant_carousel
 content = [
     {
         "style": {"textAlign": "center"},
-        "content": f'<img src="{img1}" width="450" height="800">'"<b>2. Entry</b>"
+        "content": f'<img src="{img1}" width="500" height="800">'
     },
     {
         "style": {"textAlign": "center"},
-        "content": f'<img src="{img2}" width="450" height="800">'"<b>2. Entry</b>"
+        "content": f'<img src="{img2}" width="500" height="800">'
     },
     {
         "style": {"textAlign": "center"},
         "content": f"""
             <div style="padding: 10px;">
-                <img src="{img3}" width="450" height="800">
+                <img src="{img3}" width="500" height="800">
             </div>
         """
     },
     {
         "style": {"textAlign": "center"},
         "content": f'''
-            <div>
-                <a href="https://www.imdb.com/title/tt1375666/" target="_blank">
-                    <img src="{img4}" width="450" height="500">
-                </a>
-                <h3>Inception</h3>
-                <p>Open IMDb page in new tab</p>
-            </div>
+                        <img src="{img4}" width="450" height="800">
         '''
     },
 {
@@ -146,7 +140,7 @@ content = [
             <a href="https://projet2-fcxec4iqdogknwxmwsamtt.streamlit.app/film?name=tt0044602" 
                target="_blank" 
                style="text-decoration: none; display: inline-block;">
-                <img src="{img5}" width="450" height="750" style="cursor: pointer;">
+                <img src="{img5}" width="500" height="750" style="cursor: pointer;">
             </a>
         </div>
     """
