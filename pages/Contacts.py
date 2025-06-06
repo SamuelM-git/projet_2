@@ -10,7 +10,7 @@ import os # gérer des fichiers et des chemins dans mon ordi.  il sert de vérif
 left_co, cent_co,last_co = st.columns(3)
 with cent_co:
     # le chemin de l'image de notre logo 
-    logo = "projet_2/assets/image SAPEM.png"
+    logo = "assets/image SAPEM.png"
     st.image(logo, width=150) # paramètre du logo
 #-------En-tête avec bouton à droite et Titre principal de l'application (affiché en haut de la page)
 
@@ -78,7 +78,7 @@ def show_contact_form():
                 }
 # ---------------------stockons les informations dans un csv
                 #dossier_csv = "data\Contacts.csv"
-                fichier_csv = 'projet_2\data\Contacts.csv'
+                fichier_csv = 'data\Contacts.csv'
                 df = pd.read_csv(fichier_csv)
                 df = pd.concat([df, pd.DataFrame([nouvelle_ligne])], ignore_index=True)
                 df.to_csv(fichier_csv, index=False)
