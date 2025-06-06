@@ -8,7 +8,10 @@ df_inter = pd.read_csv('data/intervenantes_final.csv')
 st.write(df_inter)
 
 #Variable persona chose the intervenant
-persona = st.session_state.selected_intervenant
+if st.session_state.selected_intervenant == None
+    st.session_state.selected_intervenant = "nm0000091"
+
+persona = st.session_state.selected_intervenant    
 df_inter = df_inter[df_inter['nconst'] == persona]
 
 
