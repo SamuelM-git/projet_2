@@ -84,19 +84,14 @@ df_sugest = recherche(film_id["tconst"].iloc[0], cols)
 for i, k in enumerate(df_sugest['poster_path']):
     if i == 0:
         img1 = k
-        link1 = k
     elif i == 1:
         img2 = k
-        link2 = k
     elif i == 2:
         img3 = k
-        link3 = k
     elif i == 3:
         img4 = k
-        link4 = k
     elif i == 4:
         img5 = k
-        link5 = k
 
 img4title = film_id['title'].iloc[0]
 
@@ -128,8 +123,6 @@ content = [
         "content": f"""
             <div style="padding: 10px;">
                 <img src="{img3}" width="450" height="800">
-                <h2 style="color: #2E86AB;">🎬 Featured Movie</h2>
-                <p>Explore the world of imagination through our spotlight feature.</p>
             </div>
         """
     },
@@ -146,14 +139,16 @@ content = [
         '''
     },
 {
-"style": {"textAlign": "center"},
-"content": f"""
-    <div style="padding: 10px; text-align: center;">
-        <a href="/film?name=tt0042235" style="text-decoration: none; display: inline-block;">
-            <img src="{img5}" width="450" height="750" style="cursor: pointer;">
-        </a>
-    </div>
-"""
+    "style": {"textAlign": "center"},
+    "content": f"""
+        <div style="padding: 10px; text-align: center;">
+            <a href="https://projet2-fcxec4iqdogknwxmwsamtt.streamlit.app/film?name=tt0044602" 
+               target="_blank" 
+               style="text-decoration: none; display: inline-block;">
+                <img src="{img5}" width="450" height="750" style="cursor: pointer;">
+            </a>
+        </div>
+    """
 }
 ]
 
@@ -196,13 +191,47 @@ selected_index = st_ant_carousel(
 # Show the carousel and get selected index
 #selected_index = st_ant_carousel(slides, height=350)
 
-# You can map index to the page or params you want
-intervenant_pages = ["nm0000003", "nm0000079"]
 
-st.write(f"Selected slide: {selected_index}")
+for i, f in enumerate(df_sugest['title']):
+    if i == 0:
+        title1 = f
+    elif i == 1:
+        title2 = f
+    elif i == 2:
+        title3 = f
+    elif i == 3:
+        title4 = f
+    elif i == 4:
+        title5 = f
 
-if st.button("Go to Intervenant page"):
-    target_page = intervenant_pages[selected_index]
-    st.experimental_set_query_params()  # optional: clear old params if needed
-    st.session_state["selected_intervenant"] = target_page
-    st.switch_page(target_page)
+for i, t in enumerate(df_sugest['tconst']):
+    if i == 0:
+        tconts1 = t
+    elif i == 1:
+        tconts2 = t
+    elif i == 2:
+        tconts3 = t
+    elif i == 3:
+        tconts4 = t
+    elif i == 4:
+        tconts5 = t
+
+col1, col2, col3, col4 = st.columns(4)
+
+with col1:
+    if st.button(f"{title2}"):
+        st.session_state.selected_intervenant = tconts2
+        st.switch_page("pages/film.py")
+    st.write(tconts2)
+with col2:
+    if st.button(f'{title3}'):
+        st.session_state.selected_intervenant = tconts3
+        st.switch_page("pages/film.py")
+with col3:
+    if st.button(f'{title4}'):
+        st.session_state.selected_intervenant = tconts4
+        st.switch_page("pages/film.py")
+with col4:
+    if st.button(f"{title5}"):
+        st.session_state.selected_intervenant = tconts5
+        st.switch_page("pages/film.py")
