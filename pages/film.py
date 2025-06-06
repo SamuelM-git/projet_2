@@ -14,6 +14,22 @@ from streamlit_carousel import carousel
 # -------- Load the data -------------
 df_movies = pd.read_csv("data/films_final.csv")
 
+#--------------- Selection film from carrousell-----------------
+name = st.query_params.get("name", None)
+
+if name:
+    st.session_state["selected_intervenant"] = name
+
+if "selected_intervenant" not in st.session_state:
+    st.session_state["selected_intervenant"] = "nm0000091" # A changer pour une film base
+
+tconst = st.session_state.selected_intervenant    
+df_inter = df_movies[df_movies['tconst'] == tconst]
+
+
+st.header(df_inter['title'].iloc[0], divider="green")
+
+'''
 # -------- Get the film ID from the query params -------------
 film_id = st.query_params.get("name", [None])[0]
 
@@ -36,7 +52,7 @@ if tconst:
     else:
         st.warning("Film not found in the dataset.")
 else:
-    st.warning("No film ID provided in query parameters.")
+    st.warning("No film ID provided in query parameters.")'''
 
 
 # XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
