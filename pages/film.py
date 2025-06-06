@@ -1,5 +1,15 @@
-import pandas as pd
+# Nos packages
 import streamlit as st
+import pandas as pd
+import datetime
+# from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler  # , MinMaxScaler
+from sklearn.neighbors import NearestNeighbors
+# Search box need to pip install streamlit_searchbox
+# Makes a search box for title de filme
+from streamlit_searchbox import st_searchbox
+from streamlit_carousel import carousel
+
 
 # -------- Load the data -------------
 df_movies = pd.read_csv("data/films_final.csv")
@@ -28,17 +38,6 @@ if tconst:
 else:
     st.warning("No film ID provided in query parameters.")
 
-# Nos packages
-import streamlit as st
-import pandas as pd
-import datetime
-# from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import StandardScaler  # , MinMaxScaler
-from sklearn.neighbors import NearestNeighbors
-# Search box need to pip install streamlit_searchbox
-# Makes a search box for title de filme
-from streamlit_searchbox import st_searchbox
-from streamlit_carousel import carousel
 
 # XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 # Le temps
@@ -56,11 +55,19 @@ middle.button("valider", use_container_width=True)
 # right.checkbox("Check me")
 st.write('___')
 # Titre principal de l'application (affiché en haut de la page)
-st.title("🏠 ACTUELLEMENT EN SALLE 🌎")
+st.title("FILM")
 
 # XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 # Code pour telecharger le fichier csv
 df = pd.read_csv("data/data_movies_details.csv")
+
+# Une affichage
+left, middle, right = st.columns(3, border=True)
+variable_test = "Origine : " + df.origin_country.unique()[1] + ". "
+"Overview : " + df.overview.unique()[1]
+left.image(df.poster_path.unique()[1], caption="poster_path")
+middle.image(df.backdrop_path.unique()[1], caption="backdrop_path")
+right.write(variable_test)
 
 # On recupere les elements unique de la colonne pour les proposer en selection
 sentiment_mapping = ["film pour enfant", "film pour adulte", "le casting"]
