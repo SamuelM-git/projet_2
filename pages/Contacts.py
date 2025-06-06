@@ -2,7 +2,6 @@
 import streamlit as st
 from datetime import datetime
 import pandas as pd
-import os # gérer des fichiers et des chemins dans mon ordi.  il sert de vérifier un fichier existant, créer des dossiers
 
 # la page de contact de notre application streamlit
 
