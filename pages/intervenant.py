@@ -9,7 +9,7 @@ st.write(df_inter)
 
 #Variable persona chose the intervenant
 if "selected_intervenant" not in st.session_state:
-    st.session_state["selected_intervenant"] = "nm0000091"
+    st.session_state["selected_intervenant"] = ""
 
 persona = st.session_state.selected_intervenant    
 df_inter = df_inter[df_inter['nconst'] == persona]
