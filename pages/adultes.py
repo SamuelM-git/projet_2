@@ -51,6 +51,19 @@ left.image(df.poster_path.unique()[1], caption="poster_path")
 middle.image(df.backdrop_path.unique()[1], caption="backdrop_path")
 right.write(variable_test)
 
+import numpy as np
+
+tab1, tab2 = st.tabs(["📈 Chart", "🗃 Data"])
+data = np.random.randn(10, 1)
+
+tab1.subheader("A tab with a chart")
+tab1.line_chart(data)
+
+tab2.subheader("A tab with the data")
+tab2.write(data)
+
+
+
 # On recupere les elements unique de la colonne pour les proposer en selection
 sentiment_mapping = ["film pour enfant", "film pour adulte", "le casting"]
 
