@@ -1,13 +1,5 @@
 # Nos packages
 import streamlit as st
-import datetime
-
-# New page
-# Titre principal de l'application (affiché en haut de la page)
-st.title("ADULTES via git")
-
-# Nos packages
-import streamlit as st
 import pandas as pd
 import datetime
 # from sklearn.model_selection import train_test_split
@@ -18,6 +10,10 @@ from sklearn.neighbors import NearestNeighbors
 from streamlit_searchbox import st_searchbox
 from streamlit_carousel import carousel
 
+
+# New page
+# Titre principal de l'application (affiché en haut de la page)
+st.title("ADULTES via git")
 
 # XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 # XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
@@ -40,20 +36,25 @@ st.write('___')
 st.title("FILM")
 
 # XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-# Code pour telecharger le fichier csv
-df = pd.read_csv("data/data_movies_details.csv")
+# Code pour telecharger les fichiers csv
+df_data_movies_details = pd.read_csv("data/data_movies_details.csv")
+df_film = pd.read_csv("data/filims_final.csv")
+df_intervenant = pd.read_csv("data/intervenantes.csv")
+df_intervenant_1950 = pd.read_csv("data/intervenant_tmdb_find_by_ID_1950_r5.csv")
 
 # Une affichage
 left, middle, right = st.columns(3, border=True)
-variable_test = "Origine : " + df.origin_country.unique()[1] + ". "
-"Overview : " + df.overview.unique()[1]
-left.image(df.poster_path.unique()[1], caption="poster_path")
-middle.image(df.backdrop_path.unique()[1], caption="backdrop_path")
+variable_test = "Origine : " + df_data_movies_details.origin_country.unique()[1] + ". "
+"Overview : " + df_data_movies_details.overview.unique()[1]
+left.image(df_data_movies_details.poster_path.unique()[1], caption="poster_path")
+middle.image(df_data_movies_details.backdrop_path.unique()[1], caption="backdrop_path")
 right.write(variable_test)
 
-import numpy as np
+st.write('___')
 
-tab1, tab2 = st.tabs(["📈 Chart", "🗃 Data"])
+import numpy as np
+# La atble
+tab1, tab2 = st.tabs(["📈 Intervenants", "🗃 Data"])
 data = np.random.randn(10, 1)
 
 tab1.subheader("A tab with a chart")
@@ -62,7 +63,7 @@ tab1.line_chart(data)
 tab2.subheader("A tab with the data")
 tab2.write(data)
 
-
+st.write('___')
 
 # On recupere les elements unique de la colonne pour les proposer en selection
 sentiment_mapping = ["film pour enfant", "film pour adulte", "le casting"]
@@ -74,32 +75,32 @@ if choix == 'film pour enfant':
     st.markdown(f"Vous avez choisi **{choix}** 🎈")
     for i in range(3):
         left, middle, right = st.columns(3, border=True)
-        variable_test = "Origine : " + df.origin_country.unique()[i+7] + ". "
-        "Overview : " + df.overview.unique()[i+7]
-        left.image(df.poster_path.unique()[i+7], caption="poster_path")
-        middle.image(df.backdrop_path.unique()[i+7], caption="backdrop_path")
+        variable_test = "Origine : " + df_data_movies_details.origin_country.unique()[i+7] + ". "
+        "Overview : " + df_data_movies_details.overview.unique()[i+7]
+        left.image(df_data_movies_details.poster_path.unique()[i+7], caption="poster_path")
+        middle.image(df_data_movies_details.backdrop_path.unique()[i+7], caption="backdrop_path")
         right.write(variable_test)
 elif choix == 'film pour adulte':
     st.markdown(f"Vous avez choisi **{choix}** ⭐")
     for i in range(3):
         left, middle, right = st.columns(3, border=True)
-        variable_test = "Origine : " + df.origin_country.unique()[i] + ". "
-        "Overview : " + df.overview.unique()[i]
-        left.image(df.poster_path.unique()[i], caption="poster_path")
-        middle.image(df.backdrop_path.unique()[i], caption="backdrop_path")
+        variable_test = "Origine : " + df_data_movies_details.origin_country.unique()[i] + ". "
+        "Overview : " + df_data_movies_details.overview.unique()[i]
+        left.image(df_data_movies_details.poster_path.unique()[i], caption="poster_path")
+        middle.image(df_data_movies_details.backdrop_path.unique()[i], caption="backdrop_path")
         right.write(variable_test)
 elif choix == 'le casting':
     st.markdown(f"Vous avez choisi **{choix}** 🌎")
-    df = pd.read_csv("data_movies_details.csv")
+    df_data_movies_details = pd.read_csv("data_movies_details.csv")
     for i in range(3):
         left, middle, right = st.columns(3, border=True)
-#       variable_1 = "https://image.tmdb.org/t/p/original"+(df.profile_path[i])
+#       variable_1 = "https://image.tmdb.org/t/p/original"+(df_data_movies_details.profile_path[i])
 # Voir comment associer le debut de l'url et le profil-path
         variable_1 = "https://image.tmdb.org/t/p/original/" \
                      "ytMrG3T4SbZfZnfXFohjQBOixTQ.jpg"
-        variable_2 = "Nom : " + df.name.unique()[i]
-        # + "Statut : "+df.known_for_department.unique()[i]
-        variable_3 = "Infos : " + df.known_for.unique()[i]
+        variable_2 = "Nom : " + df_data_movies_details.name.unique()[i]
+        # + "Statut : "+df_data_movies_details.known_for_department.unique()[i]
+        variable_3 = "Infos : " + df_data_movies_details.known_for.unique()[i]
         left.image(variable_1, caption="p_path")
         middle.write(variable_2)
         right.write(variable_3)
@@ -108,8 +109,23 @@ else:
 
 st.write('___')
 
-st.write('Affichage du dataframe')
-st.write(df)
+st.write('Affichage du dataframe 1 - df_data_movies_details')
+st.write(df_data_movies_details)
+
+st.write('___')
+
+st.write('Affichage du dataframe 2 - df_film')
+st.write(df_film)
+
+st.write('___')
+
+st.write('Affichage du dataframe 3 - df_intervenant')
+st.write(df_intervenant)
+
+st.write('___')
+
+st.write('Affichage du dataframe 4 - df_intervenant_1950')
+st.write(df_intervenant_1950)
 
 st.write('___')
 
