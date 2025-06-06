@@ -122,7 +122,7 @@ with tab2:
 
     else:
         st.write("❌ Requête échouée :", response.status_code)
-        st.write(response.text)  # pour diagnostiquer l'erreur      
+        st.write(response.text)  # pour diagnostiquer l'erreur
 
     col1.write(result_title[0])
     col2.write(result_title[1])
