@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import requests
 
-df_inter = pd.read_csv('data\intervenantes_final.csv')
+df_inter = pd.read_csv('data/intervenantes_final.csv')
 
 # Show the dataframe to explorer
 st.write(df_inter)
