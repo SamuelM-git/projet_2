@@ -31,9 +31,13 @@ left, middle = st.columns(2, vertical_alignment="bottom")
 left.text_input("Entrez votre recherche :")
 middle.button("valider", use_container_width=True)
 # right.checkbox("Check me")
+
 st.write('___')
 # Titre principal de l'application (affiché en haut de la page)
 st.title("FILM")
+import streamlit as st
+VIDEO_URL = "https://example.com/not-youtube.mp4"
+st.video(VIDEO_URL, subtitles="subtitles.vtt")
 
 # XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 # Code pour telecharger les fichiers csv
