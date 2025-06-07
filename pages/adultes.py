@@ -35,7 +35,7 @@ middle.button("valider", use_container_width=True)
 st.write('___')
 # Titre principal de l'application (affiché en haut de la page)
 st.title("FILM")
-VIDEO_URL = "https://example.com/not-youtube.mp4"
+VIDEO_URL = "https://www.youtube.com/watch?v=JVBY8SwhD9o"
 st.video(VIDEO_URL)
 
 # XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
