@@ -58,13 +58,13 @@ tab1, tab2, mtab = st.tabs(["📈 Intervenants", "🗃 Data", "Graphique"])
 data = np.random.randn(10, 1)
 
 tab1.subheader("A tab with a chart")
-tab1.line_chart(df_intervenant)
+tab1.line_chart(data)
 
 tab2.subheader("A tab with the data")
 tab2.write(df_intervenant)
 
 mtab.subheader("A tab with a chart")
-mtab.line_chart(df_intervenant)
+mtab.write(df_intervenant)
 
 st.write('___')
 
