@@ -36,7 +36,7 @@ st.write('___')
 # Titre principal de l'application (affiché en haut de la page)
 st.title("FILM")
 VIDEO_URL = "https://example.com/not-youtube.mp4"
-st.video(VIDEO_URL, subtitles="subtitles.vtt")
+st.video(VIDEO_URL)
 
 # XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 # Code pour telecharger les fichiers csv
