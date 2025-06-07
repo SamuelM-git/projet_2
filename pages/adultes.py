@@ -35,7 +35,6 @@ middle.button("valider", use_container_width=True)
 st.write('___')
 # Titre principal de l'application (affiché en haut de la page)
 st.title("FILM")
-import streamlit as st
 VIDEO_URL = "https://example.com/not-youtube.mp4"
 st.video(VIDEO_URL, subtitles="subtitles.vtt")
 
