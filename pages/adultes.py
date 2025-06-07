@@ -61,10 +61,10 @@ tab1.subheader("A tab with a chart")
 tab1.line_chart(data)
 
 tab2.subheader("A tab with the data")
-tab2.write(df_intervenant)
+tab2.write(data)
 
 mtab.subheader("A tab with a chart")
-mtab.write(df_intervenant)
+mtab.write(df_intervenant.birthYear)
 
 st.write('___')
 
