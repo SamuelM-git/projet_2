@@ -18,6 +18,7 @@ df_movies = pd.read_csv("data/films_final.csv")
 
 #--------------- Selection film from carrousell-----------------
 name = st.query_params.get("name", None)
+st.write(name)
 
 if name:
     st.session_state["selected_intervenant"] = name
