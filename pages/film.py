@@ -69,15 +69,15 @@ df_resultat = df_intervenant.loc[df_intervenant.knownForTitles.str.contains(tcon
 for i in df_resultat.index:
     #st.write(df_resultat.primaryName[i])
     st.image(df_resultat.profile_photo[i], caption=df_resultat.primaryName[i], width=100)
-    if st.button("nm0000003"):
-        st.session_state.selected_intervenant = i
+    if st.button(i):
+        st.session_state.selected_intervenant = "nm0000003"
         st.switch_page("pages/intervenant.py")
 #st.write(df_resultat)
 st.write("-------")
 
-if st.button("nm0000003"):
-    st.session_state.selected_intervenant = "nm0000003"
-    st.switch_page("pages/intervenant.py")
+#if st.button("nm0000003"):
+#    st.session_state.selected_intervenant = "nm0000003"
+#    st.switch_page("pages/intervenant.py")
 if st.button("nm0000079"):
     st.session_state.selected_intervenant = "nm0000079"
     st.switch_page("pages/intervenant.py")
