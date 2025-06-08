@@ -67,8 +67,8 @@ st.write("-------")
 #option = 'tt1399664'
 df_resultat = df_intervenant.loc[df_intervenant.knownForTitles.str.contains(tconst)]
 for i in df_resultat.index:
-    st.write(df_resultat.primaryName[i])
-    st.image(df_resultat.profile_photo[i], caption=df_resultat.primaryName[i], width=50)
+    #st.write(df_resultat.primaryName[i])
+    st.image(df_resultat.profile_photo[i], caption=df_resultat.primaryName[i], width=70)
 
 #st.write(df_resultat)
 
