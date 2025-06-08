@@ -63,7 +63,8 @@ for list_intervenant in df_intervenant.knownForTitles:
         #st.write(list_nom)
 
 #option = ['tt1399664,tt0411270,tt0464913,tt1285246']
-option = ['tt1399664']
+#option = ['tt1399664']
+option = 'tt1399664'
 st.write(df_intervenant.loc[df_intervenant.knownForTitles.str.contains(option)])
 
 """
