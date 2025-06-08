@@ -21,12 +21,12 @@ df_intervenant_1950 = pd.read_csv("data/intervenant_tmdb_find_by_ID_1950_r5.csv"
 #--------------- Selection film from carrousell-----------------
 name = st.query_params.get("name", None)
 
-if name:
-    st.session_state["selected_intervenant"] = name
-    titre_du_film = "Film par defaut dans if"
+#if name:
+#    st.session_state["selected_intervenant"] = name
+#    titre_du_film = "Film par defaut dans if"
 
-if "selected_intervenant" not in st.session_state:
-    st.session_state["selected_intervenant"] = "nm0000091" # A changer pour une film base
+#if "selected_intervenant" not in st.session_state:
+#    st.session_state["selected_intervenant"] = "nm0000091" # A changer pour une film base
 
 if st.session_state.selected_intervenant :
     tconst = st.session_state.selected_intervenant    
