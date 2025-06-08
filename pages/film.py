@@ -50,10 +50,15 @@ right.write("Année de sortie : "+str(df_inter.startYear.iloc[0]))
 right.write("Genre : "+df_inter.genres.iloc[0])
 right.write("Score : "+str(df_inter.averageRating.iloc[0])+" sur "+str(df_inter.numVotes.iloc[0])+" votant(s)")
 st.write("-------")
+st.write("Les intervenants :")
+st.write(df_intervenant.knownForTitles)
 
+"""
  for i in range(100):
      if df_intervenant.knownForTitles.iloc[i].isin(df_inter.popularity.iloc[0]) :
          st.write("trouve en "+i)
+"""
+
 st.write("-------")
 
 if st.button("nm0000003"):
