@@ -46,6 +46,7 @@ left.image(df_inter.poster_path.iloc[0], caption="l'affiche")
 middle.write(resume_film)
 right.write(infos_film)
 st.write("-------")
+"""
  for i in range(100):
      if df_intervenant.knownForTitles.iloc[i].isin(df_inter.popularity.iloc[0]) :
          left, middle, right = st.columns(3, border=True)
@@ -53,7 +54,7 @@ st.write("-------")
          middle.image(df_intervenant.poster_path.iloc[i], caption="backdrop_path")
          right.write("Test en cours")
 st.write("-------")
-
+"""
 if st.button("nm0000003"):
     st.session_state.selected_intervenant = "nm0000003"
     st.switch_page("pages/intervenant.py")
