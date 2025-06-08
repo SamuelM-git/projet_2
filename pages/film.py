@@ -39,8 +39,8 @@ st.header("Titre du film : "+titre_du_film, divider="green")
 st.video(df_inter.bande_annonce.iloc[0])
 st.write("-------")
 # Le bloc de 3 parties de présentation : l'affiche, le resume et les autres infos
-resume_film = df_inter.overview.iloc[0]
-infos_film = "Populaité : "+str(df_inter.popularity.iloc[0])+"\nAnnée de sortie : "+str(df_inter.startYear.iloc[0])+"\nGenre : "+df_inter.genres.iloc[0]+"\nScore : "+str(df_inter.averageRating.iloc[0])+" sur "+str(df_inter.numVotes.iloc[0])+" votant(s)."
+#resume_film = df_inter.overview.iloc[0]
+#infos_film = "Populaité : "+str(df_inter.popularity.iloc[0])+"\nAnnée de sortie : "+str(df_inter.startYear.iloc[0])+"\nGenre : "+df_inter.genres.iloc[0]+"\nScore : "+str(df_inter.averageRating.iloc[0])+" sur "+str(df_inter.numVotes.iloc[0])+" votant(s)."
 left, middle, right = st.columns(3, border=True)
 left.image(df_inter.poster_path.iloc[0], caption="l'affiche")
 middle.write("Résumé :")
@@ -50,21 +50,6 @@ right.write("Année de sortie : "+str(df_inter.startYear.iloc[0]))
 right.write("Genre : "+df_inter.genres.iloc[0])
 right.write("Score : "+str(df_inter.averageRating.iloc[0])+" sur "+str(df_inter.numVotes.iloc[0])+" votant(s)")
 st.write("-------")
-
- """
-#Def 2 col in intervenant
-col1, col2 = st.columns(2)
-# Col1 intervenant
-col1.image(df_inter.poster_path.iloc[0])
-#Col2 intervenant
-#Preparation text to descrive intervenant
-resume_film_2 = "Résumé : \n"+df_inter.overview.iloc[0]
-
-col2.header("Résumé :", divider="green")
-col2.markdown("""<style>.big-font {font-size:20px !important;}</style>""", unsafe_allow_html=True)
-col2.markdown(f'<p class="big-font">{resume_film_2}</p>', unsafe_allow_html=True)
-col2.markdown(f'<p class="big-font">{resume_film}</p>', unsafe_allow_html=True)
-"""
 
 
 """
