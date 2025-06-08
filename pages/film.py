@@ -88,3 +88,5 @@ st.write("-------")
 
 #st.divider()
 
+# --- bas de page ---
+st.markdown('<div class="footer">© 2025 SAPEM CONSEIL. Tous droits réservés.</div>', unsafe_allow_html=True)
