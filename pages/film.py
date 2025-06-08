@@ -56,13 +56,13 @@ st.write("-------")
 notre_condition = "tt1399664" in df_intervenant.knownForTitles
 st.write(notre_condition)
 
-"""
+
 for list_intervenant in df_intervenant:
-    if "tt1399664" in list_intervenant.knownForTitles.iloc[0]:
-        st.write(list_intervenant.knownForTitles.iloc[0])
+    if "tt1399664" in list_intervenant:
+        st.write(list_intervenant)
         #st.write(list_nom)
 
-
+"""
  for i in range(100):
      if df_intervenant.knownForTitles.iloc[i].isin(df_inter.popularity.iloc[0]) :
          st.write("trouve en "+i)
