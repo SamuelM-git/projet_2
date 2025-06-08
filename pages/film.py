@@ -53,10 +53,10 @@ st.write("-------")
 st.write("Les intervenants :")
 st.write(df_intervenant.knownForTitles)
 st.write("-------")
-for list_intervenant, list_nom in df_intervenant.knownForTitles, df_intervenant.primaryName:
-    if "tt1399664" in list_intervenant:
+for list_intervenant in df_intervenant:
+    if "tt1399664" in list_intervenant.knownForTitles:
         st.write(list_intervenant)
-        st.write(list_nom)
+        #st.write(list_nom)
 
 """
  for i in range(100):
