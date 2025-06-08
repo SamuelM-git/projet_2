@@ -67,12 +67,12 @@ df_resultat = df_intervenant.loc[df_intervenant.knownForTitles.str.contains(tcon
 
 # On teste si on a des intervenants 
 if (df_resultat.notnull().values.sum() > 0) :
-    st.write("Les intervenants :")
+    st.write("Intervenant(s) :")
     for i in df_resultat.index:
     #st.write(df_resultat.primaryName[i])
         st.image(df_resultat.profile_photo[i], caption=df_resultat.primaryName[i], width=100)
-        if st.button(str(i)):
-            st.session_state.selected_intervenant = "nm0000003"
+        if st.button(df_resultat.primaryName[i]):
+            st.session_state.selected_intervenant = df_resultat.nconst[i]
             st.switch_page("pages/intervenant.py")
 else :
     st.write("Désolé; nous n'avons pas d'intervenant à afficher")
@@ -82,9 +82,9 @@ st.write("-------")
 #if st.button("nm0000003"):
 #    st.session_state.selected_intervenant = "nm0000003"
 #    st.switch_page("pages/intervenant.py")
-if st.button("nm0000079"):
-    st.session_state.selected_intervenant = "nm0000079"
-    st.switch_page("pages/intervenant.py")
+#if st.button("nm0000079"):
+#    st.session_state.selected_intervenant = "nm0000079"
+#    st.switch_page("pages/intervenant.py")
 
-st.divider()
+#st.divider()
 
