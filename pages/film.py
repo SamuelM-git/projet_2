@@ -54,8 +54,8 @@ st.write("Les intervenants :")
 st.write(df_intervenant.knownForTitles)
 st.write("-------")
 for list_intervenant in df_intervenant:
-    if "tt1399664" in list_intervenant.knownForTitles:
-        st.write(list_intervenant)
+    if "tt1399664" in list_intervenant.knownForTitles.iloc[0]:
+        st.write(list_intervenant.knownForTitles.iloc[0])
         #st.write(list_nom)
 
 """
