@@ -50,9 +50,7 @@ right.write("Année de sortie : "+str(df_inter.startYear.iloc[0]))
 right.write("Genre : "+df_inter.genres.iloc[0])
 right.write("Score : "+str(df_inter.averageRating.iloc[0])+" sur "+str(df_inter.numVotes.iloc[0])+" votant(s)")
 st.write("-------")
-st.write("Les intervenants :")
 #st.write("id film : "+tconst)
-st.write("-------")
 #notre_condition = "tt1399664" in df_intervenant.knownForTitles
 #st.write(notre_condition)
 
@@ -66,13 +64,19 @@ st.write("-------")
 #option = ['tt1399664']
 #option = 'tt1399664'
 df_resultat = df_intervenant.loc[df_intervenant.knownForTitles.str.contains(tconst)]
-for i in df_resultat.index:
+
+# On teste si on a des intervenants 
+if df_resultat :
+    st.write("Les intervenants :")
+    for i in df_resultat.index:
     #st.write(df_resultat.primaryName[i])
-    st.image(df_resultat.profile_photo[i], caption=df_resultat.primaryName[i], width=100)
-    if st.button(str(i)):
-        st.session_state.selected_intervenant = "nm0000003"
-        st.switch_page("pages/intervenant.py")
-#st.write(df_resultat)
+        st.image(df_resultat.profile_photo[i], caption=df_resultat.primaryName[i], width=100)
+        if st.button(str(i)):
+            st.session_state.selected_intervenant = "nm0000003"
+            st.switch_page("pages/intervenant.py")
+else :
+    st.write("Désolé; nous n'avons pas d'intervenant à afficher")
+
 st.write("-------")
 
 #if st.button("nm0000003"):
