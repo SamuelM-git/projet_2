@@ -22,6 +22,7 @@ st.write(name)
 
 if name:
     st.session_state["selected_intervenant"] = name
+    titre_du_film = "Film par defaut dans if"
 
 if "selected_intervenant" not in st.session_state:
     st.session_state["selected_intervenant"] = "nm0000091" # A changer pour une film base
@@ -33,6 +34,9 @@ if st.session_state.selected_intervenant :
     titre_du_film = df_inter['title'].iloc[0]
 
 st.header(titre_du_film, divider="green")
+st.write(tconst, divider="green")
+st.write(df_movies, divider="green")
+st.write(df_inter, divider="green")
 
 if st.button("nm0000003"):
     st.session_state.selected_intervenant = "nm0000003"
