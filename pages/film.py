@@ -51,31 +51,27 @@ right.write("Genre : "+df_inter.genres.iloc[0])
 right.write("Score : "+str(df_inter.averageRating.iloc[0])+" sur "+str(df_inter.numVotes.iloc[0])+" votant(s)")
 st.write("-------")
 st.write("Les intervenants :")
-st.write("id film : "+tconst)
+#st.write("id film : "+tconst)
 st.write("-------")
 #notre_condition = "tt1399664" in df_intervenant.knownForTitles
 #st.write(notre_condition)
 
 
-for list_intervenant in df_intervenant.knownForTitles:
-    if "tt1399664" in list_intervenant:
-        st.write(list_intervenant)
+#for list_intervenant in df_intervenant.knownForTitles:
+#    if "tt1399664" in list_intervenant:
+#        st.write(list_intervenant)
         #st.write(list_nom)
 
 #option = ['tt1399664,tt0411270,tt0464913,tt1285246']
 #option = ['tt1399664']
-option = 'tt1399664'
+#option = 'tt1399664'
 df_resultat = df_intervenant.loc[df_intervenant.knownForTitles.str.contains(tconst)]
 for i in df_resultat.index:
     st.write(df_resultat.primaryName[i])
-    
+    st.image(df_resultat.profile_photo[i], caption="l'affiche")
+
 #st.write(df_resultat)
 
-"""
- for i in range(100):
-     if df_intervenant.knownForTitles.iloc[i].isin(df_inter.popularity.iloc[0]) :
-         st.write("trouve en "+i)
-"""
 
 st.write("-------")
 
