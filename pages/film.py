@@ -15,6 +15,8 @@ titre_du_film = "Film par defaut"
 
 # -------- Load the data -------------
 df_movies = pd.read_csv("data/films_final.csv")
+df_intervenant = pd.read_csv("data/intervenantes_final.csv")
+df_intervenant_1950 = pd.read_csv("data/intervenant_tmdb_find_by_ID_1950_r5.csv")
 
 #--------------- Selection film from carrousell-----------------
 name = st.query_params.get("name", None)
@@ -44,7 +46,12 @@ left.image(df_inter.poster_path.iloc[0], caption="l'affiche")
 middle.write(resume_film)
 right.write(infos_film)
 st.write("-------")
-st.write(df_inter)
+ for i in range(100):
+     if df_intervenant.knownForTitles.iloc[i].isin(df_inter.popularity.iloc[0]) :
+         left, middle, right = st.columns(3, border=True)
+         left.image(df_intervenant.poster_path.iloc[i], caption=df_intervenant.primaryName.iloc[0)
+         middle.image(df_intervenant.poster_path.iloc[i], caption="backdrop_path")
+         right.write("Test en cours")
 st.write("-------")
 
 if st.button("nm0000003"):
