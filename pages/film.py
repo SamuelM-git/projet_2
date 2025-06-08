@@ -68,11 +68,8 @@ st.write("-------")
 df_resultat = df_intervenant.loc[df_intervenant.knownForTitles.str.contains(tconst)]
 for i in df_resultat.index:
     #st.write(df_resultat.primaryName[i])
-    st.image(df_resultat.profile_photo[i], caption=df_resultat.primaryName[i], width=70)
-
+    st.image(df_resultat.profile_photo[i], caption=df_resultat.primaryName[i], width=100)
 #st.write(df_resultat)
-
-
 st.write("-------")
 
 if st.button("nm0000003"):
