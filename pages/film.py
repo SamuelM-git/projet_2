@@ -32,7 +32,12 @@ if st.session_state.selected_intervenant :
     tconst = st.session_state.selected_intervenant    
     df_inter = df_movies[df_movies['tconst'] == tconst]
     titre_du_film = df_inter['title'].iloc[0]
-
+# le film affiché par defaut "Adieu les cons"
+else :
+    tconst = "tt10196398"    
+    df_inter = df_movies[df_movies['tconst'] == tconst]
+    titre_du_film = df_inter['title'].iloc[0]
+    
 st.header("Titre du film : "+titre_du_film, divider="green")
 # On teste si il y a une bande annonce. Si il y en a pas, on affiche le message d'absence, sinon on affiche la video
 if df_inter.bande_annonce.iloc[0] == "pas disponible":
