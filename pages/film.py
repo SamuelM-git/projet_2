@@ -51,7 +51,7 @@ right.write("Genre : "+df_inter.genres.iloc[0])
 right.write("Score : "+str(df_inter.averageRating.iloc[0])+" sur "+str(df_inter.numVotes.iloc[0])+" votant(s)")
 st.write("-------")
 st.write("Les intervenants :")
-st.write(df_intervenant.knownForTitles)
+st.write("id film : "+tconst)
 st.write("-------")
 #notre_condition = "tt1399664" in df_intervenant.knownForTitles
 #st.write(notre_condition)
