@@ -35,7 +35,10 @@ if st.session_state.selected_intervenant :
     titre_du_film = df_inter['title'].iloc[0]
 
 st.header("Titre du film : "+titre_du_film, divider="green")
-st.video(df_inter.bande_annonce.iloc[0])
+if df_inter.bande_annonce.iloc[0] == "pas disponible":
+    st.write("Désolè, pas de bande annonce disponible")
+else:
+    st.video(df_inter.bande_annonce.iloc[0])
 st.write("-------")
 # Le bloc de 3 parties de présentation : l'affiche, le resume et les autres infos
 #resume_film = df_inter.overview.iloc[0]
@@ -47,7 +50,7 @@ middle.write(df_inter.overview.iloc[0])
 right.write("Popularité : "+str(df_inter.popularity.iloc[0]))
 right.write("Année de sortie : "+str(df_inter.startYear.iloc[0]))
 right.write("Genre : "+df_inter.genres.iloc[0])
-#right.write("Score : "+str(df_inter.averageRating.iloc[0])+" sur "+str(df_inter.numVotes.iloc[0])+" votant(s)")
+right.write("Score : "+str(df_inter.averageRating.iloc[0])+" sur "+str(df_inter.numVotes.iloc[0])+" votant(s)")
 st.write("-------")
 
 
