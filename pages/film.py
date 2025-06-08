@@ -39,13 +39,20 @@ st.header("Titre du film : "+titre_du_film, divider="green")
 st.video(df_inter.bande_annonce.iloc[0])
 st.write("-------")
 # Le bloc de 3 parties de présentation : l'affiche, le resume et les autres infos
-resume_film = "Résumé : \n"+df_inter.overview.iloc[0]
+resume_film = df_inter.overview.iloc[0]
 infos_film = "Populaité : "+str(df_inter.popularity.iloc[0])+"\nAnnée de sortie : "+str(df_inter.startYear.iloc[0])+"\nGenre : "+df_inter.genres.iloc[0]+"\nScore : "+str(df_inter.averageRating.iloc[0])+" sur "+str(df_inter.numVotes.iloc[0])+" votant(s)."
 left, middle, right = st.columns(3, border=True)
 left.image(df_inter.poster_path.iloc[0], caption="l'affiche")
-middle.write(resume_film)
-middle.write(resume_film)
-right.write(infos_film)
+middle.write("Résumé :")
+middle.write(df_inter.overview.iloc[0])
+right.write("Popularité : ")
+right.write(str(df_inter.popularity.iloc[0]))
+right.write("Popularité : ")
+right.write(str(df_inter.popularity.iloc[0]))
+right.write("Popularité : ")
+right.write(str(df_inter.popularity.iloc[0]))
+right.write("Popularité : ")
+right.write(str(df_inter.popularity.iloc[0]))
 st.write("-------")
 
 #Def 2 col in intervenant
