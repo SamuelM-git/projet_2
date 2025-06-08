@@ -50,7 +50,7 @@ st.write("-------")
 #Def 2 col in intervenant
 col1, col2 = st.columns(2)
 # Col1 intervenant
-col1.image(df_inter['profile_photo'].iloc[0])
+col1.image(df_inter.poster_path.iloc[0])
 #Col2 intervenant
 #Preparation text to descrive intervenant
 resume_film_2 = "Résumé : \n"+df_inter.overview.iloc[0]
