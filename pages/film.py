@@ -66,8 +66,8 @@ for list_intervenant in df_intervenant.knownForTitles:
 #option = ['tt1399664']
 option = 'tt1399664'
 df_resultat = df_intervenant.loc[df_intervenant.knownForTitles.str.contains(option)]
-for i in len(df_resultat.nconst):
-    st.write(df_resultat)
+for i in df_resultat.index:
+    st.write(df_resultat.primaryName[i])
     
 #st.write(df_resultat)
 
