@@ -56,6 +56,8 @@ st.write("-------")
 for list_intervenant in df_intervenant.knownForTitles:
     if "tt1399664" in list_intervenant:
         st.write(list_intervenant)
+        st.write(df_intervenant.primaryName)
+
 """
  for i in range(100):
      if df_intervenant.knownForTitles.iloc[i].isin(df_inter.popularity.iloc[0]) :
