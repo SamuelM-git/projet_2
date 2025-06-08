@@ -34,10 +34,13 @@ if st.session_state.selected_intervenant :
     titre_du_film = df_inter['title'].iloc[0]
 
 st.header(titre_du_film, divider="green")
+st.write("La video")
+st.write(df_inter.bande_annonce)
 st.write("-------")
-st.write(df_movies)
+st.write("L'image")
+st.write(df_inter.backdrop_path)
 st.write("-------")
-st.write(df_inter, divider="green")
+st.write(df_inter)
 
 if st.button("nm0000003"):
     st.session_state.selected_intervenant = "nm0000003"
