@@ -28,7 +28,8 @@ if "selected_intervenant" not in st.session_state:
 if st.session_state.selected_intervenant :
     tconst = st.session_state.selected_intervenant    
     df_inter = df_movies[df_movies['tconst'] == tconst]
-    titre_du_film = df_inter['title'].iloc[0]
+    #titre_du_film = df_inter['title'].iloc[0]
+    titre_du_film = df_inter['title'][0]
 
 st.header(titre_du_film, divider="green")
 
