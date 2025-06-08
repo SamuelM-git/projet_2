@@ -32,7 +32,6 @@ if "selected_intervenant" not in st.session_state:
 if st.session_state.selected_intervenant :
     tconst = st.session_state.selected_intervenant    
     df_inter = df_movies[df_movies['tconst'] == tconst]
-    #titre_du_film = df_inter['title'].iloc[0]
     titre_du_film = df_inter['title'].iloc[0]
 
 st.header("Titre du film : "+titre_du_film, divider="green")
@@ -48,7 +47,7 @@ middle.write(df_inter.overview.iloc[0])
 right.write("Popularité : "+str(df_inter.popularity.iloc[0]))
 right.write("Année de sortie : "+str(df_inter.startYear.iloc[0]))
 right.write("Genre : "+df_inter.genres.iloc[0])
-right.write("Score : "+str(df_inter.averageRating.iloc[0])+" sur "+str(df_inter.numVotes.iloc[0])+" votant(s)")
+#right.write("Score : "+str(df_inter.averageRating.iloc[0])+" sur "+str(df_inter.numVotes.iloc[0])+" votant(s)")
 st.write("-------")
 
 
