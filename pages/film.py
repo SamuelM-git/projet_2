@@ -35,12 +35,19 @@ if st.session_state.selected_intervenant :
 
 st.header(titre_du_film, divider="green")
 st.write("La video")
-st.write(df_inter.bande_annonce)
+st.write(df_inter.bande_annonce.iloc[0])
 st.write("-------")
-st.write("L'image")
-st.write(df_inter.backdrop_path)
+st.write("L'image backdrop")
+st.write(df_inter.backdrop_path.iloc[0])
+st.write("-------")
+st.write("L'overview")
+st.write(df_inter.overview.iloc[0])
+st.write("-------")
+st.write("L'image poster")
+st.write(df_inter.poster_path.iloc[0])
 st.write("-------")
 st.write(df_inter)
+st.write("-------")
 
 if st.button("nm0000003"):
     st.session_state.selected_intervenant = "nm0000003"
