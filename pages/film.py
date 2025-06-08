@@ -53,11 +53,11 @@ st.write("-------")
 st.write("Les intervenants :")
 st.write(df_intervenant.knownForTitles)
 st.write("-------")
-notre_condition = "tt1399664" in df_intervenant.knownForTitles
-st.write(notre_condition)
+#notre_condition = "tt1399664" in df_intervenant.knownForTitles
+#st.write(notre_condition)
 
 
-for list_intervenant in df_intervenant:
+for list_intervenant in df_intervenant.knownForTitles:
     if "tt1399664" in list_intervenant:
         st.write(list_intervenant)
         #st.write(list_nom)
