@@ -52,7 +52,9 @@ right.write("Score : "+str(df_inter.averageRating.iloc[0])+" sur "+str(df_inter.
 st.write("-------")
 st.write("Les intervenants :")
 st.write(df_intervenant.knownForTitles)
-
+st.write("-------")
+for list_intervenant in df_intervenant.knownForTitles:
+    st.write(list_intervenant)
 """
  for i in range(100):
      if df_intervenant.knownForTitles.iloc[i].isin(df_inter.popularity.iloc[0]) :
