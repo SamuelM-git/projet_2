@@ -10,6 +10,8 @@ from sklearn.neighbors import NearestNeighbors
 from streamlit_searchbox import st_searchbox
 from streamlit_carousel import carousel
 
+# Affichage par defaut
+titre_du_film = "Film par defaut"
 
 # -------- Load the data -------------
 df_movies = pd.read_csv("data/films_final.csv")
@@ -23,11 +25,12 @@ if name:
 if "selected_intervenant" not in st.session_state:
     st.session_state["selected_intervenant"] = "nm0000091" # A changer pour une film base
 
-tconst = st.session_state.selected_intervenant    
-df_inter = df_movies[df_movies['tconst'] == tconst]
+if st.session_state.selected_intervenant :
+    tconst = st.session_state.selected_intervenant    
+    df_inter = df_movies[df_movies['tconst'] == tconst]
+    titre_du_film = df_inter['title'].iloc[0]
 
-
-st.header(df_inter['title'].iloc[0], divider="green")
+st.header(titre_du_film, divider="green")
 
 if st.button("nm0000003"):
     st.session_state.selected_intervenant = "nm0000003"
