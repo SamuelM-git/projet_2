@@ -33,8 +33,7 @@ if st.session_state.selected_intervenant :
     #titre_du_film = df_inter['title'].iloc[0]
     titre_du_film = df_inter['title'].iloc[0]
 
-st.header(titre_du_film, divider="green")
-st.write("La video")
+st.header("Titre du film : "+titre_du_film, divider="green")
 st.video(df_inter.bande_annonce.iloc[0])
 st.write("-------")
 st.write("L'image backdrop")
