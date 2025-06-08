@@ -44,7 +44,7 @@ infos_film = "Populaité : "+str(df_inter.popularity.iloc[0])+"\nAnnée de sorti
 left, middle, right = st.columns(3, border=True)
 left.image(df_inter.poster_path.iloc[0], caption="l'affiche")
 middle.write("Résumé :")
-middle.write(df_inter.overview.iloc[0])
+middle.write("Résumé :"+df_inter.overview.iloc[0])
 right.write("Popularité : ")
 right.write(str(df_inter.popularity.iloc[0]))
 right.write("Popularité : ")
