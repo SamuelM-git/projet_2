@@ -31,11 +31,12 @@ if st.session_state.selected_intervenant :
     tconst = st.session_state.selected_intervenant    
     df_inter = df_movies[df_movies['tconst'] == tconst]
     #titre_du_film = df_inter['title'].iloc[0]
-    titre_du_film = df_inter['title']
+    titre_du_film = df_inter['title'].iloc[0]
 
 st.header(titre_du_film, divider="green")
-st.write(tconst, divider="green")
-st.write(df_movies, divider="green")
+st.write("-------")
+st.write(df_movies)
+st.write("-------")
 st.write(df_inter, divider="green")
 
 if st.button("nm0000003"):
