@@ -66,7 +66,7 @@ st.write("-------")
 df_resultat = df_intervenant.loc[df_intervenant.knownForTitles.str.contains(tconst)]
 
 # On teste si on a des intervenants 
-if df_resultat :
+if df_resultat.notnull().any() :
     st.write("Les intervenants :")
     for i in df_resultat.index:
     #st.write(df_resultat.primaryName[i])
