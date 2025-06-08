@@ -60,6 +60,7 @@ st.write("-------")
 for list_intervenant in df_intervenant.knownForTitles:
     if "tt1399664" in list_intervenant:
         st.write(list_intervenant)
+        st.write(df_intervenant[list_intervenant])
         #st.write(list_nom)
 
 """
