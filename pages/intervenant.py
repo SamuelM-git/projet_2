@@ -20,8 +20,10 @@ persona = st.session_state.selected_intervenant
 df_inter = df_inter[df_inter['nconst'] == persona]
 
 
-st.header('Intervenants')
-st.divider()
+
+
+st.header('Intervenants', divider="green")
+# st.divider()
 
 #Def 2 col in intervenant
 col1, col2 = st.columns(2)

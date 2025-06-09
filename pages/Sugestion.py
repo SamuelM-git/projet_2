@@ -14,7 +14,7 @@ st.write('Choisir votre filme favorite dans le genre comedie de production franc
 
 # Load data frame and show if needed:
 df_movies = pd.read_csv("data/films_final.csv")
-# st.write(df_movies)
+st.write(df_movies)
 dummies = df_movies.genres.str.get_dummies(sep=',').drop(columns="Comedy")
 genres = dummies.columns.to_list()
 df_movies = pd.concat([df_movies, dummies], axis=1)
@@ -113,50 +113,36 @@ from st_ant_carousel import st_ant_carousel
 content = [
     {
         "style": {"textAlign": "center"},
-        "content": f'<img src="{img1}" width="500" height="800">'
+        "content": f'<img src="{img1}" width="450" height="700">'
     },
     {
         "style": {"textAlign": "center"},
-        "content": f'<img src="{img2}" width="500" height="800">'
+        "content": f'<img src="{img2}" width="450" height="700">'
     },
     {
         "style": {"textAlign": "center"},
-        "content": f"""
-            <div style="padding: 10px;">
-                <img src="{img3}" width="500" height="800">
-            </div>
-        """
+        "content": f'<img src="{img3}" width="450" height="700">'
     },
     {
         "style": {"textAlign": "center"},
-        "content": f'''
-                        <img src="{img4}" width="450" height="800">
-        '''
+        "content": f'<img src="{img4}" width="450" height="700" style="cursor: pointer;">'
     },
-{
-    "style": {"textAlign": "center"},
-    "content": f"""
-        <div style="padding: 10px; text-align: center;">
-            <a href="https://projet2-fcxec4iqdogknwxmwsamtt.streamlit.app/film?name=tt0044602" 
-               target="_blank" 
-               style="text-decoration: none; display: inline-block;">
-                <img src="{img5}" width="500" height="750" style="cursor: pointer;">
-            </a>
-        </div>
-    """
+    {
+         "style": {"textAlign": "center"},
+        "content": f'<img src="{img5}" width="450" height="700" style="cursor: pointer;">'
 }
 ]
 
 # Define carousel styling
 carousel_style = {
-    "width": "500px",        # set desired width
-    "height": "800px",       # optional height
+    "width": "450px",        # set desired width
+    "height": "700px",       # optional height
     "margin": "0 auto",      # center the carousel
-    "background-color": "#f0f2f5",
-    "border": "2px solid #ccc",
-    "border-radius": "8px",
+    "background-color": "#119803",
+    "border": "0px solid #ccc",
+    "border-radius": "0px",
     "box-shadow": "0 4px 6px rgba(0, 0, 0, 0.1)",
-    "padding": "5px"
+    "padding": "0px"
 }
 
 # Display the carousel
@@ -172,10 +158,10 @@ selected_index = st_ant_carousel(
     effect="scrollx",
     pauseOnDotsHover=True,
     pauseOnHover=True,
-    animationSpeed=500,
+    animationSpeed=450,
     vertical=False,
     adaptiveHeight=True, 
-    height=800
+    height=700
 )
 
 #if selected:
