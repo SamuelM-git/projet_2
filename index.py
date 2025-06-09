@@ -8,17 +8,18 @@ from sklearn.neighbors import NearestNeighbors
 # Search box need to pip install streamlit_searchbox
 # Makes a search box for title de filme
 from streamlit_searchbox import st_searchbox
+from streamlit_option_menu import option_menu
+
 
 #Set page config -------------------------
 st.set_page_config(layout="wide", initial_sidebar_state="collapsed")
 
 
 # Bar naviagation ----------------------------------
-# Hide Streamlit UI
-# Bar naviagation ----------------------------------
-from streamlit_option_menu import option_menu
 
-with st.container():
+left, midel, right = st.columns([1,1.2,1])
+
+with midel.container():
     selected = option_menu(
         menu_title=None,
         options=["Home", "Sugestion", "Contacts", "Enfants", "Film"],

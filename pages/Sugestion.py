@@ -39,7 +39,7 @@ with st.container():
         }
     )
 if selected == "Home":
-    st.switch_page("Home.py")
+    st.switch_page("index.py")
 if selected == "Sugestion":
     selected = 'Sugestion'
 if selected == "Contacts":
@@ -59,7 +59,7 @@ st.write('Choisir votre filme favorite dans le genre comedie de production franc
 
 # Load data frame and show if needed:
 df_movies = pd.read_csv("data/films_final.csv")
-st.write(df_movies)
+# st.write(df_movies)
 dummies = df_movies.genres.str.get_dummies(sep=',').drop(columns="Comedy")
 genres = dummies.columns.to_list()
 df_movies = pd.concat([df_movies, dummies], axis=1)

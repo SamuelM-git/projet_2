@@ -2,6 +2,7 @@
 import streamlit as st
 from datetime import datetime
 import pandas as pd
+from streamlit_option_menu import option_menu
 
 # ------ set page config ----------
 st.set_page_config(layout="centered", initial_sidebar_state="collapsed")

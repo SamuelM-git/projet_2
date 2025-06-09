@@ -9,6 +9,7 @@ from sklearn.neighbors import NearestNeighbors
 # Makes a search box for title de filme
 from streamlit_searchbox import st_searchbox
 from streamlit_carousel import carousel
+from streamlit_option_menu import option_menu
 
 
 # ------ set page config ----------
@@ -20,7 +21,7 @@ with st.container():
         menu_title=None,
         options=["Home", "Sugestion", "Contacts", "Enfants", "Film"],
         icons=[],  # No icons
-        default_index=0,
+        default_index=4,
         orientation="horizontal",
         styles={
             "container": {

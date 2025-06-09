@@ -1,6 +1,7 @@
 # Nos packages
 import streamlit as st
 import datetime
+from streamlit_option_menu import option_menu
 
 # ------ set page config ----------
 st.set_page_config(layout="centered", initial_sidebar_state="collapsed")
