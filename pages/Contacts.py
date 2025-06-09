@@ -3,6 +3,9 @@ import streamlit as st
 from datetime import datetime
 import pandas as pd
 
+# ------ set page config ----------
+st.set_page_config(layout="centered")
+
 # la page de contact de notre application streamlit
 
 #--------------------mettre le logo

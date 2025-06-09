@@ -2,6 +2,11 @@ import streamlit as st
 import pandas as pd
 import requests
 
+# ------ set page config ----------
+st.set_page_config(layout="centered")
+
+
+
 df_inter = pd.read_csv('data/intervenantes_final.csv')
 
 # Show the dataframe to explorer

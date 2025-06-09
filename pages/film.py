@@ -10,6 +10,10 @@ from sklearn.neighbors import NearestNeighbors
 from streamlit_searchbox import st_searchbox
 from streamlit_carousel import carousel
 
+
+# ------ set page config ----------
+st.set_page_config(layout="centered")
+
 # Affichage par defaut
 titre_du_film = "Film par defaut"
 
