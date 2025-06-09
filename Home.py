@@ -8,25 +8,22 @@ from sklearn.neighbors import NearestNeighbors
 # Search box need to pip install streamlit_searchbox
 # Makes a search box for title de filme
 from streamlit_searchbox import st_searchbox
-
+from streamlit_carousel import carousel
+# st.set_page_config(layout="wide")
 #Set page config -------------------------
 st.set_page_config(layout="wide", initial_sidebar_state="collapsed")
 
 
 # Bar naviagation ----------------------------------
-# Hide Streamlit UI
+from streamlit_option_menu import option_menu
+
+# --- Hide default Streamlit UI
 st.markdown("""
     <style>
-        #MainMenu, footer, header {
-            visibility: hidden;
-        }
-
-        /* Make room for fixed nav */
+        #MainMenu, footer, header {visibility: hidden;}
         .block-container {
-            padding-top: 40px;
+            padding-top: 4rem; /* Prevent overlap with fixed nav */
         }
-
-        /* Fixed top navbar */
         .topnav {
             position: fixed;
             top: 0;
@@ -38,35 +35,47 @@ st.markdown("""
             border-radius: 10px;
             z-index: 1000;
         }
-
-        .topnav a {
-            float: left;
-            display: block;
-            color: white;
-            text-align: center;
-            padding: 14px 20px;
-            text-decoration: none;
-            font-size: 17px;
-            border-radius: 10px;
-        }
-
-        .topnav a:hover {
-            background-color: #06335E;
-        }
-
-        .topnav a.active {
-            background-color: #062341;
-        }
     </style>
-
-    <div class="topnav">
-        <a href="/" class="active" target="_self">Home</a>
-        <a href="/Sugestion" target="_self">Sugestion</a>
-        <a href="/Contacts" target="_self">Contacts</a>
-        <a href="/enfants" target="_self">Enfants</a>
-        <a href="/film" target="_self">Film</a>
-    </div>
 """, unsafe_allow_html=True)
+
+# --- Custom horizontal navbar with fixed position
+with st.container():
+    selected = option_menu(
+        menu_title=None,
+        options=["Home", "Sugestion", "Contacts", "Enfants", "Film"],
+        icons=[],  # No icons
+        default_index=0,
+        orientation="horizontal",
+        styles={
+            "container": {
+                "padding": "0!important",
+                "background-color": "#2E86AB",
+                "class": "navbar-fixed",  # Add fixed class
+            },
+            "nav-link": {
+                "color": "white",
+                "font-size": "16px",
+                "margin": "0px",
+                "padding": "10px",
+            },
+            "nav-link-selected": {
+                "background-color": "#1B4F72"
+            },
+        }
+    )
+
+if selected == "Home":
+    selected = "Home"
+if selected == "Sugestion":
+    st.switch_page("pages/Sugestion.py")
+if selected == "Contacts":
+    st.switch_page("pages/Contacts.py")
+if selected == "Enfants":
+    st.switch_page("pages/Enfants.py")
+
+
+
+
 #----------------------------------------------------
 
 
@@ -87,6 +96,7 @@ title1, title2, title3, title4, title5, title6, title7 = titles[:7]
 
 
 #Carousel doc https://pypi.org/project/st-ant-carousel/
+import streamlit as st
 from st_ant_carousel import st_ant_carousel
 
 # Define the content with images

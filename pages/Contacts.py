@@ -6,58 +6,43 @@ import pandas as pd
 # ------ set page config ----------
 st.set_page_config(layout="centered", initial_sidebar_state="collapsed")
 
-# Bar naviagation ----------------------------------
-# Hide Streamlit UI
-st.markdown("""
-    <style>
-        #MainMenu, footer, header {
-            visibility: hidden;
+with st.container():
+    selected = option_menu(
+        menu_title=None,
+        options=["Home", "Sugestion", "Contacts", "Enfants", "Film"],
+        icons=[],  # No icons
+        default_index=2,
+        orientation="horizontal",
+        styles={
+            "container": {
+                "padding": "0!important",
+                "background-color": "#2E86AB",
+                "class": "navbar-fixed",  # Add fixed class
+            },
+            "nav-link": {
+                "color": "white",
+                "font-size": "16px",
+                "margin": "0px",
+                "padding": "10px",
+            },
+            "nav-link-selected": {
+                "background-color": "#1B4F72"
+            },
         }
+    )
 
-        /* Make room for fixed nav */
-        .block-container {
-            padding-top: 40px;
-        }
+if selected == "Home":
+    st.switch_page("index.py")
+if selected == "Sugestion":
+    st.switch_page("pages/Sugestion.py")
+if selected == "Contacts":
+    selected = "Contacts"
+if selected == "Enfants":
+    st.switch_page("pages/Enfants.py")
 
-        /* Fixed top navbar */
-        .topnav {
-            position: fixed;
-            top: 0;
-            left: 100px;
-            width: 100%;
-            background-color: #070E19;
-            overflow: hidden;
-            z-index: 1000;
-        }
 
-        .topnav a {
-            float: left;
-            display: block;
-            color: white;
-            text-align: center;
-            padding: 14px 20px;
-            text-decoration: none;
-            font-size: 17px;
-            border-radius: 10px
-        }
 
-        .topnav a:hover {
-            background-color: #06335E;
-        }
 
-        .topnav a.active {
-            background-color: #062341;
-        }
-    </style>
-
-    <div class="topnav">
-        <a href="/" target="_self">Home</a>
-        <a href="/Sugestion" target="_self">Sugestion</a>
-        <a href="/Contacts" class="active" target="_self">Contacts</a>
-        <a href="/enfants" target="_self">Enfants</a>
-        <a href="/film" target="_self">Film</a>
-    </div>
-""", unsafe_allow_html=True)
 #----------------------------------------------------
 
 # la page de contact de notre application streamlit
