@@ -17,7 +17,7 @@ with st.container():
         styles={
             "container": {
                 "padding": "0!important",
-                "background-color": "#2E86AB",
+                "background-color": "#05335F",
                 "class": "navbar-fixed",  # Add fixed class
             },
             "nav-link": {
