@@ -33,7 +33,7 @@ with st.container():
     )
 
 if selected == "Home":
-    st.switch_page("pages/index.py")
+    st.switch_page("index.py")
 if selected == "Sugestion":
     st.switch_page("pages/Sugestion.py")
 if selected == "Contacts":
