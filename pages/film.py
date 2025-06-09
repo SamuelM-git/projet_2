@@ -23,7 +23,7 @@ st.markdown("""
         }
 
         /* Make room for fixed nav */
-        .block-container {
+        .block-container
             padding-top: 40px;
         }
 
@@ -31,10 +31,11 @@ st.markdown("""
         .topnav {
             position: fixed;
             top: 0;
-            left: 100px;
+            left: 120px;
             width: 100%;
             background-color: #070E19;
             overflow: hidden;
+            border-radius: 10px;
             z-index: 1000;
         }
 

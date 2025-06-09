@@ -51,7 +51,7 @@ st.markdown("""
         <a href="/Sugestion" target="_self">Sugestion</a>
         <a href="/Contacts" target="_self">Contacts</a>
         <a href="/enfants" target="_self">Enfants</a>
-        <a href="/film"  class="active" target="_self">Intervenant</a>
+        <a href="/intervenant"  class="active" target="_self">Intervenant</a>
     </div>
 """, unsafe_allow_html=True)
 #----------------------------------------------------

@@ -30,10 +30,12 @@ st.markdown("""
         .topnav {
             position: fixed;
             top: 0;
-            left: 100px;
+            left: 120px;
+            right: 120px
             width: 100%;
             background-color: #070E19;
             overflow: hidden;
+            border-radius: 10px;
             z-index: 1000;
         }
 
@@ -45,7 +47,7 @@ st.markdown("""
             padding: 14px 20px;
             text-decoration: none;
             font-size: 17px;
-            border-radius: 10px
+            border-radius: 10px;
         }
 
         .topnav a:hover {
