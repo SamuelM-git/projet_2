@@ -10,6 +10,10 @@ from sklearn.neighbors import NearestNeighbors
 from streamlit_searchbox import st_searchbox
 from streamlit_carousel import carousel
 
+# ------ set page config ----------
+st.set_page_config(layout="centered")
+#----------------------------------
+
 # XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 # Le temps
 # https://docs.streamlit.io/develop/api-reference/widgets/st.date_input

@@ -24,3 +24,6 @@ streamlit-Carousel
 #pip install st-ant-carousel
 st-ant-carousel
 #from st_ant_carousel import st_ant_carousel
+
+# pip install streamlit-option-menu
+# streamlit-option-menu
