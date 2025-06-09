@@ -51,7 +51,7 @@ if selected == "Sugestion":
 if selected == "Contacts":
     st.switch_page("pages/Contacts.py")
 if selected == "Enfants":
-    st.switch_page("pages\Enfants.py")
+    st.switch_page("pages/Enfants.py")
 
 
 
