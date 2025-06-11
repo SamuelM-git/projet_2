@@ -212,7 +212,7 @@ for col, i in enumerate(df_sugest.index[1:]):
 # --------------------------------------------------------------
 
 #--------------------------- Film choissi ------------------------------
-df_sugest
+
 left, mid = st.columns([0.3,0.7])
 mid.header("Vous avez choisi :", divider='green')
 mid.title(df_sugest.title.iloc[0])
