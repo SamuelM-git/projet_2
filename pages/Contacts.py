@@ -49,12 +49,28 @@ if selected == "Enfants":
 # la page de contact de notre application streamlit
 
 #--------------------mettre le logo
-left_co, cent_co,last_co = st.columns(3)
-with cent_co:
+left_co, last_co = st.columns(2)
+with left_co:
     # le chemin de l'image de notre logo 
     logo = "assets/sapem_logo_final.png"
     st.image(logo, width=150) # paramètre du logo
 #-------En-tête avec bouton à droite et Titre principal de l'application (affiché en haut de la page)
+# --------------------2eme  column avec descriptive de group-------------------
+with last_co:
+    st.write("""
+    Vous avez une question, une suggestion ou un bug à signaler ?  
+    N'hésitez pas à nous contacter !
+
+    ### 👥 Notre Équipe Projet
+
+    - 👨‍💼 **Samir** — *Data Analyst*  
+    - 📊 **Pédro** — *Product Owner*  
+    - 👩‍💻 **Marie Claude** — *Data Analyst*  
+    - 👨‍💻 **Samuel** — *Développeur*  
+    - 🧭 **Lylle Audrey** — *Scrum Master*
+            
+    """)
+# --------------------------------------
 
 # --- Initialisation de l'état ---
 if "popup_active" not in st.session_state:
@@ -151,22 +167,6 @@ st.markdown('</div>', unsafe_allow_html=True)
 
 # ----------------------------------------------
 
-
-# ---------------------------------------
-st.write("""
-Vous avez une question, une suggestion ou un bug à signaler ?  
-N'hésitez pas à nous contacter !
-
-### 👥 Notre Équipe Projet
-
-- 👨‍💼 **Samir** — *Data Analyst*  
-- 📊 **Pédro** — *Product Owner*  
-- 👩‍💻 **Marie Claude** — *Data Analyst*  
-- 👨‍💻 **Samuel** — *Développeur*  
-- 🧭 **Lylle Audrey** — *Scrum Master*
-         
-""")
-# --------------------------------------
 st.divider()
 
 # -----------colonne titre + bouton ----------------
