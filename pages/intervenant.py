@@ -68,7 +68,7 @@ if name:
 if "selected_intervenant" not in st.session_state:
     st.session_state["selected_intervenant"] = "nm0000091"
 
-persona = st.session_state.selected_intervenant    
+persona = st.session_state.selected_intervenant
 df_inter = df_inter[df_inter['nconst'] == persona]
 
 
@@ -77,7 +77,7 @@ df_inter = df_inter[df_inter['nconst'] == persona]
 st.header('Intervenants', divider="green")
 # st.divider()
 
-#Def 2 col in intervenant
+# Def 2 col in intervenant
 col1, col2 = st.columns(2)
 
 
@@ -85,9 +85,9 @@ col1, col2 = st.columns(2)
 col1.image(df_inter['profile_photo'].iloc[0])
 
 
-#Col2 intervenant
-#Preparation text to descrive intervenant
-if df_inter['deathYear'].isna == True:
+# Col2 intervenant
+# Preparation text to descrive intervenant
+if df_inter['deathYear'].isna is True:
     dead = " Elle est décédée le " + {int(df_inter['deathYear'].iloc[0])} + "."
 else:
     dead = "."
@@ -108,7 +108,8 @@ texte = (f"""{df_inter['primaryName'].iloc[0]},{birth}
 
 
 col2.header(df_inter['primaryName'].iloc[0], divider="green")
-col2.markdown("""<style>.big-font {font-size:20px !important;}</style>""", unsafe_allow_html=True)
+col2.markdown("""<style>.big-font {font-size:20px !important;}</style>""",
+              unsafe_allow_html=True)
 col2.markdown(f'<p class="big-font">{texte}</p>', unsafe_allow_html=True)
 
 #Col2----------- retour au film --------------
@@ -155,7 +156,7 @@ with tab2:
     # IDs from DataFrame
     imdb_ids = df_inter['knownForTitles'].iloc[0].split(',')
     variables = {"ids": imdb_ids}
-    #st.write(f"imdb ids {imdb_ids}")
+    # st.write(f"imdb ids {imdb_ids}")
 
     # Send the request
     response = requests.post(
@@ -172,10 +173,10 @@ with tab2:
     if response.status_code == 200:
         data = response.json()
         titles = data.get("data").get("titles")
-        #st.write("Titres récupérés :", titles)
+        # st.write("Titres récupérés :", titles)
 
         for title in titles:
-            if bool(title.get('original_title')) == True:
+            if bool(title.get('original_title')) is True:
                 result_title.append(title.get('original_title'))
                 posters = title.get("posters")
                 if posters:
@@ -189,16 +190,14 @@ with tab2:
                     result_poster.append(posters[0].get('url'))
                 else:
                     result_poster.append("assets/no_poster.jpg")
-                
 
         # Show
-        #st.write(f"films {result_title}")
-        #st.write(f"poster {result_poster}")
+        # st.write(f"films {result_title}")
+        # st.write(f"poster {result_poster}")
 
     else:
         st.write("❌ Requête échouée :", response.status_code)
         st.write(response.text)  # pour diagnostiquer l'erreur
-        
 
     col1.write(result_title[0])
     col2.write(result_title[1])

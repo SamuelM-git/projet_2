@@ -57,10 +57,9 @@ if selected == "Enfants":
 #----------------------------------------------------
 
 # la page de contact de notre application streamlit
-
 #--------------------mettre le logo
-left, mid ,last_co = st.columns([0.2, 0.3, 0.6])
-with mid:
+left_co, cent_co, last_co = st.columns(3)
+with cent_co:
     # le chemin de l'image de notre logo 
     logo = "assets/sapem_logo_final.png"
     st.image(logo, width=150) # paramètre du logo
@@ -148,15 +147,11 @@ def show_contact_form():
                     "message": st.session_state.message
                 }
 # ---------------------stockons les informations dans un csv
-                #dossier_csv = "data\Contacts.csv"
-                fichier_csv = 'data\Contacts.csv'
-                # créer le fichier s'il n'existe pas encore
-                try:
-                    df = pd.read_csv(fichier_csv)
-                    df = pd.concat([df, pd.DataFrame([nouvelle_ligne])], ignore_index=True)
-                except FileNotFoundError:
-                    df = pd.DataFrame([nouvelle_ligne])
-                # on sauvegarde dans le fichier csv
+# dossier_csv = "data\Contacts.csv"
+                fichier_csv = 'data/Contacts.csv'
+                df = pd.read_csv(fichier_csv)
+                df = pd.concat([df, pd.DataFrame([nouvelle_ligne])],
+                                ignore_index=True)
                 df.to_csv(fichier_csv, index=False)
                 # ajouter la nouvelle ligne
                 #df = pd.concat([df, pd.DataFrame([nouvelle_ligne])], ignore_index=True)
@@ -173,19 +168,23 @@ def show_contact_form():
             # sinon affiche un message d'erreur
             else:
                 st.warning("⚠️ Merci de remplir tous les champs.")
+    # Masquer le formulaire après avoir envoyé                            
+                st.session_state["popup_active"] = False 
+    # ------------------------------------Réinitialiser les champs
 
-    #------------------------------------Réinitialiser les champs
+            # sinon affiche un message d'erreur
+        else:
+            st.warning("⚠️ Merci de remplir tous les champs.")
+    st.markdown('</div>', unsafe_allow_html=True)
 
-st.markdown('</div>', unsafe_allow_html=True)
-
-
-# --------------------------------------------
+# --------------------------------------
 st.divider()
 
 # -----------colonne titre + bouton ----------------
 
-col1, col2, col3 = st.columns([2,3,1]) # nous ajustons les largeurs, plus large à gauche pour le titre
-#--------------Création du bouton pour afficher le formulaire
+col1, col2, col3 = st.columns([2, 3, 1])
+# nous ajustons les largeurs, plus large à gauche pour le titre
+# --------------Création du bouton pour afficher le formulaire
 with col2:
     if st.button("📬 Écrire un message"):
         show_contact_form()
@@ -195,17 +194,12 @@ with col3:
     st.markdown("")
 # --------------Titre du formulaire ---------------------------
 with col1:
-    st.markdown("###" )  # espace pour le titre
+    st.markdown("###")  # espace pour le titre
 
 # -----------------------  
 # ------------------------------
 st.markdown("---")
 # -------------------------------------------------------
-
-
-
-  
-
 
 # --- bas de page ---
 st.markdown('<div class="footer">© 2025 SAPEM CONSEIL. All rights reserved.</div>', unsafe_allow_html=True)
@@ -239,7 +233,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 # -------
 
-#--------------style du bouton du formulaire
+# --------------style du bouton du formulaire
 st.markdown("""
 <style>
     .stButton>button {
@@ -251,5 +245,4 @@ st.markdown("""
     }
 </style>
 """, unsafe_allow_html=True)
-
 # ----------------------------------------------

@@ -66,8 +66,12 @@ if selected == "Enfants":
 
 
 # Titre principal de l'application (affiché en haut de la page)
+<<<<<<< HEAD
+st.title("🏠 ACTUELLEMENT EN SALLE - index projet-2")
+=======
 left, midel, right = st.columns([1,1.2,1])
 midel.title("🏠 ACTUELLEMENT EN SALLE 🌎")
+>>>>>>> 916ced5b680445d3dc86763fbc69858b0b0bd3d1
 
 # XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 # Code pour telecharger le fichier csv
