@@ -11,12 +11,20 @@ from sklearn.neighbors import NearestNeighbors
 
 # ------ set page config ----------
 st.set_page_config(layout="centered", initial_sidebar_state="collapsed")
+# Remove side bar navigation------
+st.markdown("""
+    <style>
+    [data-testid="stSidebarNav"] { display: none; }
+    [data-testid="stSidebar"] { display: none; }
+    </style>
+""", unsafe_allow_html=True)
+
 
 ## Bar naviagation ----------------------------------
 with st.container():
     selected = option_menu(
         menu_title=None,
-        options=["Home", "Sugestion", "Contacts", "Enfants", "Film"],
+        options=["Home", "Sugestion", "Contacts", "Enfants"],
         icons=[],  # No icons
         default_index=3,
         orientation="horizontal",
@@ -68,7 +76,7 @@ df_movies = pd.read_csv("data/films_final.csv")
 df_movies_ani = df_movies[df_movies['genres'].str.contains("Animation")]
 
 #------------------------ Multi Tabs ----------------------
-tab1, tab2 = st.tabs(["Sugestion", "All films"])
+tab1, tab2 = st.tabs(["Sugestion", "Tous les films"])
 
 #------------------------ All films TAB 1-------------------
 with tab1:
@@ -127,7 +135,7 @@ with tab1:
     # Search function from streamlit_searchbox and disgn of the box search
     selected_value = st_searchbox(
         search_film,
-        placeholder="Search Film... ",
+        placeholder="Recherchez votre film d'animation préféré..... ",
         # Text in the search box if nothing inside
         # key="my_key", #No parametre info
     )
@@ -164,3 +172,18 @@ with tab2:
             if st.button(textwrap.shorten(df_movies_ani.title[i], width=19,  placeholder="…"), use_container_width=True,  key=f"btn_{i}"):
                 st.session_state.selected_film = df_movies_ani.tconst[i]
                 st.switch_page("pages/film.py")
+
+
+# --------------------------- bas de page -----------------
+st.markdown('<div class="footer">© 2025 SAPEM CONSEIL. All rights reserved.</div>', unsafe_allow_html=True)
+st.markdown("""
+    <style>
+    .footer {
+        margin-top: 50px;
+        text-align: center;
+        font-size: 14px;
+        color: #A0A0A0;
+    }
+    </style>
+""", unsafe_allow_html=True)
+# -----------------------------------------------------------------

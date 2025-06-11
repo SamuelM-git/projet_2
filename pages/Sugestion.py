@@ -10,6 +10,13 @@ from streamlit_carousel import carousel
 
 # ------ set page config ----------
 st.set_page_config(layout="centered", initial_sidebar_state="collapsed")
+# Remove side bar navigation------
+st.markdown("""
+    <style>
+    [data-testid="stSidebarNav"] { display: none; }
+    [data-testid="stSidebar"] { display: none; }
+    </style>
+""", unsafe_allow_html=True)
 
 # Bar naviagation ----------------------------------
 from streamlit_option_menu import option_menu
@@ -17,7 +24,7 @@ from streamlit_option_menu import option_menu
 with st.container():
     selected = option_menu(
         menu_title=None,
-        options=["Home", "Sugestion", "Contacts", "Enfants", "Film"],
+        options=["Home", "Sugestion", "Contacts", "Enfants"],
         icons=[],  # No icons
         default_index=1,
         orientation="horizontal",
@@ -115,7 +122,7 @@ def search_film(searchterm):
 # Search function from streamlit_searchbox and disgn of the box search
 selected_value = st_searchbox(
     search_film,
-    placeholder="Search Film... ",
+    placeholder="Recherchez votre film préféré... ",
     # Text in the search box if nothing inside
     # key="my_key", #No parametre info
 )
@@ -123,7 +130,7 @@ selected_value = st_searchbox(
 # If nothing in search box "selected_value' the return of carrousel is
 # controled here:
 film_id = df_movies[df_movies["title"].str.contains(
-    "Le plaisir" if not isinstance(selected_value, str) else selected_value)]
+    "En fanfare" if not isinstance(selected_value, str) else selected_value)]
 
 # Acess the links of poster films
 df_sugest = recherche(film_id["tconst"].iloc[0], cols)
@@ -198,7 +205,7 @@ selected_index = st_ant_carousel(
 # ------------ botton with acces to thew films info -----------
 
 import textwrap
-st.header("Films Animation", divider="green")
+st.header("Sugestion de Films", divider="green")
 colist = ["col1", "col2", "col3", 'col4']
 colist = st.columns(4)
 for col, i in enumerate(df_sugest.index[1:]):
@@ -213,11 +220,29 @@ for col, i in enumerate(df_sugest.index[1:]):
 
 #--------------------------- Film choissi ------------------------------
 
-left, mid = st.columns([0.3,0.7])
+left, mid = st.columns([0.5,0.7])
 mid.header("Vous avez choisi :", divider='green')
 mid.title(df_sugest.title.iloc[0])
 mid.subheader(f"Rating: {df_sugest.averageRating.iloc[0]} :star:")
 mid.subheader(f"Sortie: {df_sugest.startYear.iloc[0]}")
 left.image(df_sugest.poster_path.iloc[0], width=300)
+mid.header(" ", divider="green")
+if mid.button(textwrap.shorten(df_sugest.title.iloc[0], width=19,  placeholder="…"), use_container_width=True):
+    st.session_state.selected_film = df_sugest.tconst.iloc[0]
+    st.switch_page("pages/film.py")
 
 # ----------------------------------------------------------------------
+
+# --------------------------- bas de page -----------------
+st.markdown('<div class="footer">© 2025 SAPEM CONSEIL. All rights reserved.</div>', unsafe_allow_html=True)
+st.markdown("""
+    <style>
+    .footer {
+        margin-top: 50px;
+        text-align: center;
+        font-size: 14px;
+        color: #A0A0A0;
+    }
+    </style>
+""", unsafe_allow_html=True)
+# -----------------------------------------------------------------

@@ -7,10 +7,20 @@ from streamlit_option_menu import option_menu
 # ------ set page config ----------
 st.set_page_config(layout="centered", initial_sidebar_state="collapsed")
 
+# Remove side bar navigation------
+st.markdown("""
+    <style>
+    [data-testid="stSidebarNav"] { display: none; }
+    [data-testid="stSidebar"] { display: none; }
+    </style>
+""", unsafe_allow_html=True)
+
+# Bar naviagation ----------------------------------
+
 with st.container():
     selected = option_menu(
         menu_title=None,
-        options=["Home", "Sugestion", "Contacts", "Enfants", "Film"],
+        options=["Home", "Sugestion", "Contacts", "Enfants"],
         icons=[],  # No icons
         default_index=2,
         orientation="horizontal",
@@ -89,6 +99,10 @@ if "message" not in st.session_state:
 # -----------En-tête-----------------------------
 centrleft, center ,centerright= st.columns([0.2, 0.6, 0.2])
 center.title("🎬 Contactez-nous") # le titre de notre formulaire
+# ----------------------------------------------
+center.write("""
+Vous avez une question, une suggestion ou un bug à signaler ?  
+N'hésitez pas à nous contacter !""")
 
 
 # nous avons créer les colonnes pour mettre le bouton à droite car nous n'utilisaons pas html dans streamlit
@@ -164,10 +178,6 @@ def show_contact_form():
 
 st.markdown('</div>', unsafe_allow_html=True)
 
-# ----------------------------------------------
-st.write("""
-Vous avez une question, une suggestion ou un bug à signaler ?  
-N'hésitez pas à nous contacter !""")
 
 # --------------------------------------------
 st.divider()
@@ -198,7 +208,7 @@ st.markdown("---")
 
 
 # --- bas de page ---
-st.markdown('<div class="footer">© 2025 SAPEM CONSEIL. Tous droits réservés.</div>', unsafe_allow_html=True)
+st.markdown('<div class="footer">© 2025 SAPEM CONSEIL. All rights reserved.</div>', unsafe_allow_html=True)
 
 # --- Styles personnalisés de notre page de contact ---
 st.markdown("""
@@ -233,8 +243,8 @@ st.markdown("""
 st.markdown("""
 <style>
     .stButton>button {
-        background-color: #ffcc00;
-        color: black;
+        background-color: #05335F;
+        color: white;
         border-radius: 12px;
         padding: 0.5em 1em;
         font-weight: bold;

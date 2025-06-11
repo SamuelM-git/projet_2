@@ -14,6 +14,14 @@ from streamlit_option_menu import option_menu
 
 # ------ set page config ----------
 st.set_page_config(layout="centered", initial_sidebar_state="collapsed")
+# Remove side bar navigation------
+st.markdown("""
+    <style>
+    [data-testid="stSidebarNav"] { display: none; }
+    [data-testid="stSidebar"] { display: none; }
+    </style>
+""", unsafe_allow_html=True)
+
 
 # Bar naviagation ----------------------------------
 with st.container():
@@ -118,7 +126,7 @@ right.header(titre_du_film, divider="green")
 right.write("Popularité : "+str(df_inter.popularity.iloc[0]))
 right.write("Année de sortie : "+str(df_inter.startYear.iloc[0]))
 right.write("Genre : "+str(df_inter.genres.iloc[0]).replace(",", ", "))
-right.write("Score : "+str(df_inter.averageRating.iloc[0])+" sur "+str(df_inter.numVotes.iloc[0])+" votant(s)")
+right.write("Rating : "+str(df_inter.averageRating.iloc[0])+" sur "+str(df_inter.numVotes.iloc[0])+" votant(s)")
 #st.write("id film : "+tconst)
 #notre_condition = "tt1399664" in df_intervenant.knownForTitles
 #st.write(notre_condition)
@@ -159,8 +167,8 @@ with tab2:
         for col, i in enumerate(df_resultat.index):
             with colist[col % 4]:
             #st.write(df_resultat.primaryName[i])
-                st.image(df_resultat.profile_photo[i], width=130)
-                if st.button(df_resultat.primaryName[i]):
+                st.image(df_resultat.profile_photo[i], width=160)
+                if st.button(df_resultat.primaryName[i], use_container_width=True):
                     st.session_state.selected_intervenant = df_resultat.nconst[i]
                     st.switch_page("pages/intervenant.py")
     else :
@@ -177,5 +185,16 @@ with tab2:
 
     #st.divider()
 
-# --- bas de page ---
-st.markdown('<div class="footer">© 2025 SAPEM CONSEIL. Tous droits réservés.</div>', unsafe_allow_html=True)
+# --------------------------- bas de page -----------------
+st.markdown('<div class="footer">© 2025 SAPEM CONSEIL. All rights reserved.</div>', unsafe_allow_html=True)
+st.markdown("""
+    <style>
+    .footer {
+        margin-top: 50px;
+        text-align: center;
+        font-size: 14px;
+        color: #A0A0A0;
+    }
+    </style>
+""", unsafe_allow_html=True)
+# -----------------------------------------------------------------

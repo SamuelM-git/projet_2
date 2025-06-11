@@ -13,7 +13,13 @@ from streamlit_option_menu import option_menu
 
 #Set page config -------------------------
 st.set_page_config(layout="wide", initial_sidebar_state="collapsed")
-
+# Remove side bar navigation------
+st.markdown("""
+    <style>
+    [data-testid="stSidebarNav"] { display: none; }
+    [data-testid="stSidebar"] { display: none; }
+    </style>
+""", unsafe_allow_html=True)
 
 # Bar naviagation ----------------------------------
 
@@ -22,7 +28,7 @@ left, midel, right = st.columns([1,1.2,1])
 with midel.container():
     selected = option_menu(
         menu_title=None,
-        options=["Home", "Sugestion", "Contacts", "Enfants", "Film"],
+        options=["Home", "Sugestion", "Contacts", "Enfants"],
         icons=[],  # No icons
         default_index=0,
         orientation="horizontal",
@@ -146,3 +152,18 @@ for col, i in enumerate(df_movies_filt.index[:6]):
         if st.button(textwrap.shorten(df_movies_filt.title[i], width=22,  placeholder="…"), use_container_width=True,  key=f"btn_{i}"):
             st.session_state.selected_film = df_movies_filt.tconst[i]
             st.switch_page("pages/film.py")
+
+
+# --------------------------- bas de page -----------------
+st.markdown('<div class="footer">© 2025 SAPEM CONSEIL. All rights reserved.</div>', unsafe_allow_html=True)
+st.markdown("""
+    <style>
+    .footer {
+        margin-top: 50px;
+        text-align: center;
+        font-size: 14px;
+        color: #A0A0A0;
+    }
+    </style>
+""", unsafe_allow_html=True)
+# -----------------------------------------------------------------
