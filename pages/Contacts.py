@@ -1,22 +1,11 @@
 # Nos packages
 import streamlit as st
-<<<<<<< HEAD
-# import datetime
-
-# New page
-# Titre principal de l'application (affiché en haut de la page)
-st.title("Contacts")
-
-
-# https://www.youtube.com/watch?v=9n4Ch2Dgex0 simple way to make a contact form
-=======
 from datetime import datetime
 import pandas as pd
 
 # la page de contact de notre application streamlit
-
 #--------------------mettre le logo
-left_co, cent_co,last_co = st.columns(3)
+left_co, cent_co, last_co = st.columns(3)
 with cent_co:
     # le chemin de l'image de notre logo 
     logo = "assets/image SAPEM.png"
@@ -86,10 +75,11 @@ def show_contact_form():
                     "message": st.session_state.message
                 }
 # ---------------------stockons les informations dans un csv
-                #dossier_csv = "data\Contacts.csv"
+# dossier_csv = "data\Contacts.csv"
                 fichier_csv = 'data/Contacts.csv'
                 df = pd.read_csv(fichier_csv)
-                df = pd.concat([df, pd.DataFrame([nouvelle_ligne])], ignore_index=True)
+                df = pd.concat([df, pd.DataFrame([nouvelle_ligne])],
+                                ignore_index=True)
                 df.to_csv(fichier_csv, index=False)
 
                 st.success("✅ Merci pour votre message !")
@@ -101,8 +91,7 @@ def show_contact_form():
                 st.warning("⚠️ Merci de remplir tous les champs.")
     # Masquer le formulaire après avoir envoyé                            
                 st.session_state["popup_active"] = False 
-    #------------------------------------Réinitialiser les champs
-
+    # ------------------------------------Réinitialiser les champs
 
             # sinon affiche un message d'erreur
         else:
@@ -124,15 +113,15 @@ N'hésitez pas à nous contacter !
 - 👩‍💻 **Marie Claude** — *Data Analyst*  
 - 👨‍💻 **Samuel** — *Développeur*  
 - 🧭 **Lylle Audrey** — *Scrum Master*
-         
 """)
 # --------------------------------------
 st.divider()
 
 # -----------colonne titre + bouton ----------------
 
-col1, col2, col3 = st.columns([2,3,1]) # nous ajustons les largeurs, plus large à gauche pour le titre
-#--------------Création du bouton pour afficher le formulaire
+col1, col2, col3 = st.columns([2, 3, 1])
+# nous ajustons les largeurs, plus large à gauche pour le titre
+# --------------Création du bouton pour afficher le formulaire
 with col2:
     if st.button("📬 Écrire un message"):
         show_contact_form()
@@ -142,20 +131,16 @@ with col3:
     st.markdown("")
 # --------------Titre du formulaire ---------------------------
 with col1:
-    st.markdown("###" )  # espace pour le titre
+    st.markdown("###")  # espace pour le titre
 
 # -----------------------  
 # ------------------------------
 st.markdown("---")
 # -------------------------------------------------------
 
-
-
-  
-
-
 # --- bas de page ---
-st.markdown('<div class="footer">© 2025 SAPEM CONSEIL. Tous droits réservés.</div>', unsafe_allow_html=True)
+st.markdown('<div class="footer">© 2025 SAPEM CONSEIL. Tous droits réservés.'
+            '</div>', unsafe_allow_html=True)
 
 # --- Styles personnalisés de notre page de contact ---
 st.markdown("""
@@ -186,7 +171,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 # -------
 
-#--------------style du bouton du formulaire
+# --------------style du bouton du formulaire
 st.markdown("""
 <style>
     .stButton>button {
@@ -198,6 +183,4 @@ st.markdown("""
     }
 </style>
 """, unsafe_allow_html=True)
-
 # ----------------------------------------------
->>>>>>> c984ff5ea41f955d766d14c191b17786970f5101
