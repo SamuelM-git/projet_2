@@ -24,7 +24,7 @@ from streamlit_option_menu import option_menu
 with st.container():
     selected = option_menu(
         menu_title=None,
-        options=["Home", "Sugestion", "Contacts", "Enfants"],
+        options=["Home", "Sugestion", "Enfants", "Contacts"],
         icons=[],  # No icons
         default_index=1,
         orientation="horizontal",

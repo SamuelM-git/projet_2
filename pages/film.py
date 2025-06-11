@@ -27,7 +27,7 @@ st.markdown("""
 with st.container():
     selected = option_menu(
         menu_title=None,
-        options=["Home", "Sugestion", "Contacts", "Enfants", "Film"],
+        options=["Home", "Sugestion", "Enfants", "Contacts", "Film"],
         icons=[],  # No icons
         default_index=4,
         orientation="horizontal",

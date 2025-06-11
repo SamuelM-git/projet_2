@@ -28,7 +28,7 @@ left, midel, right = st.columns([1,1.2,1])
 with midel.container():
     selected = option_menu(
         menu_title=None,
-        options=["Home", "Sugestion", "Contacts", "Enfants"],
+        options=["Home", "Sugestion", "Enfants", "Contacts"],
         icons=[],  # No icons
         default_index=0,
         orientation="horizontal",
