@@ -49,8 +49,8 @@ if selected == "Enfants":
 # la page de contact de notre application streamlit
 
 #--------------------mettre le logo
-left_co, last_co = st.columns(2)
-with left_co:
+left, mid ,last_co = st.columns([0.2, 0.3, 0.6])
+with mid:
     # le chemin de l'image de notre logo 
     logo = "assets/sapem_logo_final.png"
     st.image(logo, width=150) # paramètre du logo
@@ -61,15 +61,20 @@ with last_co:
 
     ### 👥 Notre Équipe Projet
 
-    - 👨‍💼 **Samir** — *Data Analyst*  
-    - 📊 **Pédro** — *Product Owner*  
-    - 👩‍💻 **Marie Claude** — *Data Analyst*  
-    - 👨‍💻 **Samuel** — *Développeur*  
+      
+    - 📊 **Pedro** — *Product Owner*
     - 🧭 **Lylle Audrey** — *Scrum Master*
+    - 👨‍💻 **Samuel** — *Développeur*          
+    - 👨‍💼 **Samir** — *Data Analyst*
+    - 👩‍💻 **Marie Claude** — *Data Analyst*
             
     """)
 # --------------------------------------
 
+st.markdown('<div class="subtitle">SAPEM CONSEIL - Experts en stratégie et données</div>', unsafe_allow_html=True)
+st.header(" ", divider="green")
+
+#-------------------------------------------------------------------------------------------
 # --- Initialisation de l'état ---
 if "popup_active" not in st.session_state:
     st.session_state["popup_active"] = False
@@ -82,12 +87,8 @@ if "email" not in st.session_state:
 if "message" not in st.session_state:
     st.session_state.message = ""
 # -----------En-tête-----------------------------
-st.title("🎬 Contactez l'équipe") # le titre de notre formulaire
-# --- Affichage titres ---
-
-st.markdown('<div class="title">Contactez-nous</div>', unsafe_allow_html=True)
-st.markdown('<div class="subtitle">SAPEM CONSEIL - Experts en stratégie et données</div>', unsafe_allow_html=True)
-
+centrleft, center ,centerright= st.columns([0.2, 0.6, 0.2])
+center.title("🎬 Contactez-nous") # le titre de notre formulaire
 
 
 # nous avons créer les colonnes pour mettre le bouton à droite car nous n'utilisaons pas html dans streamlit
