@@ -70,9 +70,9 @@ df_movies = pd.read_csv("data/films_final.csv")
 df_movies_filt = df_movies[(df_movies['startYear'] > 2023) & (df_movies['averageRating'] > 6)]
 df_movies_filt = df_movies_filt.sort_values(by=['popularity'], ascending=False)
 backdrop = df_movies_filt.backdrop_path.tolist()
-col1, col2, col3, col4, col5, col6, col7 = backdrop[:7]
+col1, col2, col3, col4, col5, col6 = backdrop[:6]
 titles = df_movies_filt['title'].tolist()
-title1, title2, title3, title4, title5, title6, title7 = titles[:7]
+title1, title2, title3, title4, title5, title6 = titles[:6]
 
 
 #Carousel doc https://pypi.org/project/st-ant-carousel/
@@ -103,10 +103,6 @@ content = [
     {
         "style": {"textAlign": "center", "color": "white", "fontSize": "50px"},
         "content": f'<b2>{title6}</b2><img src="{col6}" width="2000" height="700">'
-    },
-    {
-        "style": {"textAlign": "center", "color": "white", "fontSize": "50px"},
-        "content": f'<b2>{title7}</b2><img src="{col7}" width="2000" height="700">'
     }
 ]
 
@@ -124,7 +120,7 @@ st_ant_carousel(
     content,
     carousel_style=carousel_style,
     autoplay=True,
-    autoplaySpeed=2000,
+    autoplaySpeed=3000,
     dotPosition="bottom",
     dots=True,
     waitForAnimate=True,
@@ -132,8 +128,21 @@ st_ant_carousel(
     effect="scrollx",
     pauseOnDotsHover=True,
     pauseOnHover=True,
-    animationSpeed=2000,
+    animationSpeed=5000,
     vertical=False,
     adaptiveHeight=True, 
     height=700
 )
+
+# -------------------------- Films in salle ---------------------------
+import textwrap
+st.header("", divider="green")
+colist = ["col1", "col2", "col3"]
+colist = st.columns(6)
+for col, i in enumerate(df_movies_filt.index[:6]):
+    with colist[col % 6]:
+    #st.write(df_movies_filt.primaryName[i])
+        st.image(df_movies_filt.poster_path[i], width=300)
+        if st.button(textwrap.shorten(df_movies_filt.title[i], width=22,  placeholder="…"), use_container_width=True,  key=f"btn_{i}"):
+            st.session_state.selected_film = df_movies_filt.tconst[i]
+            st.switch_page("pages/film.py")

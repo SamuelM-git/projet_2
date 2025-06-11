@@ -76,8 +76,8 @@ if name:
 #if "selected_intervenant" not in st.session_state:
 #    st.session_state["selected_intervenant"] = "nm0000091" # A changer pour une film base
 
-if st.session_state.selected_intervenant :
-    tconst = st.session_state.selected_intervenant    
+if st.session_state.selected_film :
+    tconst = st.session_state.selected_film    
     df_inter = df_movies[df_movies['tconst'] == tconst]
     titre_du_film = df_inter['title'].iloc[0]
 else :        

@@ -1,4 +1,4 @@
-# Nos packages
+  # Nos packages
 import streamlit as st
 import pandas as pd
 import datetime
@@ -13,7 +13,7 @@ from streamlit_carousel import carousel
 
 # New page
 # Titre principal de l'application (affiché en haut de la page)
-st.title("ADULTES via git")
+st.title("ADULTES")
 
 # XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 # XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX

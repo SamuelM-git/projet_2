@@ -127,17 +127,11 @@ film_id = df_movies[df_movies["title"].str.contains(
 
 # Acess the links of poster films
 df_sugest = recherche(film_id["tconst"].iloc[0], cols)
-for i, k in enumerate(df_sugest['poster_path']):
-    if i == 0:
-        img1 = k
-    elif i == 1:
-        img2 = k
-    elif i == 2:
-        img3 = k
-    elif i == 3:
-        img4 = k
-    elif i == 4:
-        img5 = k
+backdrop = df_sugest.backdrop_path.tolist()
+img1, img2, img3, img4, img5 = backdrop[:6]
+titles = df_sugest['title'].tolist()
+title1, title2, title3, title4, title5 = titles[:6]
+
 
 img4title = film_id['title'].iloc[0]
 
@@ -157,37 +151,28 @@ from st_ant_carousel import st_ant_carousel
 # Define the content with images
 content = [
     {
-        "style": {"textAlign": "center"},
-        "content": f'<img src="{img1}" width="450" height="700">'
+        "style": {"textAlign": "center", "color": "white", "fontSize": "50px"},
+        "content": f'<b2>{title2}</b2><img src="{img2}" width="700" height="500">'
     },
     {
-        "style": {"textAlign": "center"},
-        "content": f'<img src="{img2}" width="450" height="700">'
+        "style": {"textAlign": "center", "color": "white", "fontSize": "50px"},
+        "content": f'<b2>{title3}</b2><img src="{img3}" width="700" height="500">'
     },
     {
-        "style": {"textAlign": "center"},
-        "content": f'<img src="{img3}" width="450" height="700">'
+        "style": {"textAlign": "center", "color": "white", "fontSize": "50px"},
+        "content": f'<b2>{title4}</b2><img src="{img4}" width="700" height="500" style="cursor: pointer;">'
     },
     {
-        "style": {"textAlign": "center"},
-        "content": f'<img src="{img4}" width="450" height="700" style="cursor: pointer;">'
-    },
-    {
-         "style": {"textAlign": "center"},
-        "content": f'<img src="{img5}" width="450" height="700" style="cursor: pointer;">'
-}
+         "style": {"textAlign": "center", "color": "white", "fontSize": "50px"},
+        "content": f'<b2>{title5}</b2><img src="{img5}" width="700" height="500" style="cursor: pointer;">'
+    }
 ]
 
 # Define carousel styling
 carousel_style = {
-    "width": "450px",        # set desired width
-    "height": "700px",       # optional height
-    "margin": "0 auto",      # center the carousel
-    "background-color": "#119803",
-    "border": "0px solid #ccc",
-    "border-radius": "0px",
-    "box-shadow": "0 4px 6px rgba(0, 0, 0, 0.1)",
-    "padding": "0px"
+    "width": "100%",
+    "height": "500px",
+    "background-color": "#12980300",
 }
 
 # Display the carousel
@@ -195,7 +180,7 @@ selected_index = st_ant_carousel(
     content,
     carousel_style=carousel_style,
     autoplay=True,
-    autoplaySpeed=2000,
+    autoplaySpeed=3000,
     dotPosition="bottom",
     dots=True,
     waitForAnimate=True,
@@ -203,61 +188,36 @@ selected_index = st_ant_carousel(
     effect="scrollx",
     pauseOnDotsHover=True,
     pauseOnHover=True,
-    animationSpeed=450,
+    animationSpeed=5000,
     vertical=False,
     adaptiveHeight=True, 
-    height=700,
+    height=500,
     key=df_sugest['tconst'].iloc[0]
 )
 
-#if selected:
-#   st.session_state["selected_intervenant"] = selected['title']
-#    st.switch_page("pages/intervenant.py")
+# ------------ botton with acces to thew films info -----------
 
+import textwrap
+st.header("Films Animation", divider="green")
+colist = ["col1", "col2", "col3", 'col4']
+colist = st.columns(4)
+for col, i in enumerate(df_sugest.index[1:]):
+    with colist[col % 4]:
+    #st.write(df_sugest.primaryName[i])
+        st.image(df_sugest.poster_path[i], width=260)
+        if st.button(textwrap.shorten(df_sugest.title[i], width=19,  placeholder="…"), use_container_width=True,  key=f"btn_{i}"):
+            st.session_state.selected_film = df_sugest.tconst[i]
+            st.switch_page("pages/film.py")
 
-# Show the carousel and get selected index
-#selected_index = st_ant_carousel(slides, height=350)
+# --------------------------------------------------------------
 
+#--------------------------- Film choissi ------------------------------
+df_sugest
+left, mid = st.columns([0.3,0.7])
+mid.header("Vous avez choisi :", divider='green')
+mid.title(df_sugest.title.iloc[0])
+mid.subheader(f"Rating: {df_sugest.averageRating.iloc[0]} :star:")
+mid.subheader(f"Sortie: {df_sugest.startYear.iloc[0]}")
+left.image(df_sugest.poster_path.iloc[0], width=300)
 
-for i, f in enumerate(df_sugest['title']):
-    if i == 0:
-        title1 = f
-    elif i == 1:
-        title2 = f
-    elif i == 2:
-        title3 = f
-    elif i == 3:
-        title4 = f
-    elif i == 4:
-        title5 = f
-
-for i, t in enumerate(df_sugest['tconst']):
-    if i == 0:
-        tconts1 = t
-    elif i == 1:
-        tconts2 = t
-    elif i == 2:
-        tconts3 = t
-    elif i == 3:
-        tconts4 = t
-    elif i == 4:
-        tconts5 = t
-
-col1, col2, col3, col4 = st.columns(4)
-
-with col1:
-    if st.button(f"{title2}"):
-        st.session_state.selected_intervenant = tconts2
-        st.switch_page("pages/film.py")
-with col2:
-    if st.button(f'{title3}'):
-        st.session_state.selected_intervenant = tconts3
-        st.switch_page("pages/film.py")
-with col3:
-    if st.button(f'{title4}'):
-        st.session_state.selected_intervenant = tconts4
-        st.switch_page("pages/film.py")
-with col4:
-    if st.button(f"{title5}"):
-        st.session_state.selected_intervenant = tconts5
-        st.switch_page("pages/film.py")
+# ----------------------------------------------------------------------
