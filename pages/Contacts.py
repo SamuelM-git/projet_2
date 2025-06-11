@@ -22,7 +22,7 @@ with st.container():
         menu_title=None,
         options=["Home", "Sugestion", "Enfants", "Contacts"],
         icons=[],  # No icons
-        default_index=2,
+        default_index=3,
         orientation="horizontal",
         styles={
             "container": {
