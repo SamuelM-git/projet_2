@@ -2,16 +2,83 @@
 import streamlit as st
 from datetime import datetime
 import pandas as pd
+from streamlit_option_menu import option_menu
+
+# ------ set page config ----------
+st.set_page_config(layout="centered", initial_sidebar_state="collapsed")
+
+with st.container():
+    selected = option_menu(
+        menu_title=None,
+        options=["Home", "Sugestion", "Contacts", "Enfants", "Film"],
+        icons=[],  # No icons
+        default_index=2,
+        orientation="horizontal",
+        styles={
+            "container": {
+                "padding": "0!important",
+                "background-color": "#05335F",
+                "class": "navbar-fixed",  # Add fixed class
+            },
+            "nav-link": {
+                "color": "white",
+                "font-size": "16px",
+                "margin": "0px",
+                "padding": "10px",
+            },
+            "nav-link-selected": {
+                "background-color": "#1B4F72"
+            },
+        }
+    )
+
+if selected == "Home":
+    st.switch_page("index.py")
+if selected == "Sugestion":
+    st.switch_page("pages/Sugestion.py")
+if selected == "Contacts":
+    selected = "Contacts"
+if selected == "Enfants":
+    st.switch_page("pages/Enfants.py")
+
+
+
+
+#----------------------------------------------------
 
 # la page de contact de notre application streamlit
 #--------------------mettre le logo
+<<<<<<< HEAD
 left_co, cent_co, last_co = st.columns(3)
 with cent_co:
+=======
+left, mid ,last_co = st.columns([0.2, 0.3, 0.6])
+with mid:
+>>>>>>> 916ced5b680445d3dc86763fbc69858b0b0bd3d1
     # le chemin de l'image de notre logo 
-    logo = "assets/image SAPEM.png"
+    logo = "assets/sapem_logo_final.png"
     st.image(logo, width=150) # paramètre du logo
 #-------En-tête avec bouton à droite et Titre principal de l'application (affiché en haut de la page)
+# --------------------2eme  column avec descriptive de group-------------------
+with last_co:
+    st.write("""
 
+    ### 👥 Notre Équipe Projet
+
+      
+    - 📊 **Pedro** — *Product Owner*
+    - 🧭 **Lylle Audrey** — *Scrum Master*
+    - 👨‍💻 **Samuel** — *Développeur*          
+    - 👨‍💼 **Samir** — *Data Analyst*
+    - 👩‍💻 **Marie Claude** — *Data Analyst*
+            
+    """)
+# --------------------------------------
+
+st.markdown('<div class="subtitle">SAPEM CONSEIL - Experts en stratégie et données</div>', unsafe_allow_html=True)
+st.header(" ", divider="green")
+
+#-------------------------------------------------------------------------------------------
 # --- Initialisation de l'état ---
 if "popup_active" not in st.session_state:
     st.session_state["popup_active"] = False
@@ -24,12 +91,8 @@ if "email" not in st.session_state:
 if "message" not in st.session_state:
     st.session_state.message = ""
 # -----------En-tête-----------------------------
-st.title("🎬 Contactez l'équipe") # le titre de notre formulaire
-# --- Affichage titres ---
-
-st.markdown('<div class="title">Contactez-nous</div>', unsafe_allow_html=True)
-st.markdown('<div class="subtitle">SAPEM CONSEIL - Experts en stratégie et données</div>', unsafe_allow_html=True)
-
+centrleft, center ,centerright= st.columns([0.2, 0.6, 0.2])
+center.title("🎬 Contactez-nous") # le titre de notre formulaire
 
 
 # nous avons créer les colonnes pour mettre le bouton à droite car nous n'utilisaons pas html dans streamlit
@@ -50,7 +113,7 @@ def show_contact_form():
         </style>
         """,
         unsafe_allow_html=True  
-                )
+    )
     #--------------------------------------------
  
  
@@ -75,20 +138,40 @@ def show_contact_form():
                     "message": st.session_state.message
                 }
 # ---------------------stockons les informations dans un csv
+<<<<<<< HEAD
 # dossier_csv = "data\Contacts.csv"
                 fichier_csv = 'data/Contacts.csv'
                 df = pd.read_csv(fichier_csv)
                 df = pd.concat([df, pd.DataFrame([nouvelle_ligne])],
                                 ignore_index=True)
+=======
+                #dossier_csv = "data\Contacts.csv"
+                fichier_csv = 'data\Contacts.csv'
+                # créer le fichier s'il n'existe pas encore
+                try:
+                    df = pd.read_csv(fichier_csv)
+                    df = pd.concat([df, pd.DataFrame([nouvelle_ligne])], ignore_index=True)
+                except FileNotFoundError:
+                    df = pd.DataFrame([nouvelle_ligne])
+                # on sauvegarde dans le fichier csv
+>>>>>>> 916ced5b680445d3dc86763fbc69858b0b0bd3d1
                 df.to_csv(fichier_csv, index=False)
-
+                # ajouter la nouvelle ligne
+                #df = pd.concat([df, pd.DataFrame([nouvelle_ligne])], ignore_index=True)
+                #df.to_csv(fichier_csv, index=False)
+            # valider si le message a été bien envoyer   
                 st.success("✅ Merci pour votre message !")
-                
+            # réinitialise le formulaire
                 st.session_state.nom = ""
                 st.session_state.email = ""
                 st.session_state.message = ""
+                    # Masquer le formulaire après avoir envoyé                            
+                st.session_state["popup_active"] = False 
+            
+            # sinon affiche un message d'erreur
             else:
                 st.warning("⚠️ Merci de remplir tous les champs.")
+<<<<<<< HEAD
     # Masquer le formulaire après avoir envoyé                            
                 st.session_state["popup_active"] = False 
     # ------------------------------------Réinitialiser les champs
@@ -97,15 +180,19 @@ def show_contact_form():
         else:
             st.warning("⚠️ Merci de remplir tous les champs.")
     st.markdown('</div>', unsafe_allow_html=True)
+=======
+
+    #------------------------------------Réinitialiser les champs
+
+st.markdown('</div>', unsafe_allow_html=True)
+>>>>>>> 916ced5b680445d3dc86763fbc69858b0b0bd3d1
 
 # ----------------------------------------------
-
-
-# ---------------------------------------
 st.write("""
 Vous avez une question, une suggestion ou un bug à signaler ?  
-N'hésitez pas à nous contacter !
+N'hésitez pas à nous contacter !""")
 
+<<<<<<< HEAD
 ### 👥 Notre Équipe Projet
 
 - 👨‍💼 **Samir** — *Data Analyst*  
@@ -115,6 +202,9 @@ N'hésitez pas à nous contacter !
 - 🧭 **Lylle Audrey** — *Scrum Master*
 """)
 # --------------------------------------
+=======
+# --------------------------------------------
+>>>>>>> 916ced5b680445d3dc86763fbc69858b0b0bd3d1
 st.divider()
 
 # -----------colonne titre + bouton ----------------

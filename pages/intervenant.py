@@ -1,13 +1,62 @@
 import streamlit as st
 import pandas as pd
 import requests
+from streamlit_option_menu import option_menu
+
+# Bar naviagation ----------------------------------
+with st.container():
+    selected = option_menu(
+        menu_title=None,
+        options=["Home", "Sugestion", "Contacts", "Enfants", "Intervenant"],
+        icons=[],  # No icons
+        default_index=4,
+        orientation="horizontal",
+        styles={
+            "container": {
+                "padding": "0!important",
+                "background-color": "#05335F",
+                "class": "navbar-fixed",  # Add fixed class
+            },
+            "nav-link": {
+                "color": "white",
+                "font-size": "16px",
+                "margin": "0px",
+                "padding": "10px",
+            },
+            "nav-link-selected": {
+                "background-color": "#1B4F72"
+            },
+        }
+    )
+
+if selected == "Home":
+    st.switch_page("index.py")
+if selected == "Sugestion":
+    st.switch_page("pages/Sugestion.py")
+if selected == "Contacts":
+    st.switch_page("pages/Contacts.py")
+if selected == "Enfants":
+    st.switch_page("pages/Enfants.py")
+if selected == 'Intervenant':
+    selected = 'intervenant'
+
+#----------------------------------------------------
 
 df_inter = pd.read_csv('data/intervenantes_final.csv')
 
 # Show the dataframe to explorer
-st.write(df_inter)
+# st.write(df_inter)
 
+<<<<<<< HEAD
 # Variable persona chose the intervenant
+=======
+#Variable persona chose the intervenant
+name = st.query_params.get("name", None)
+
+if name:
+    st.session_state["selected_intervenant"] = name
+
+>>>>>>> 916ced5b680445d3dc86763fbc69858b0b0bd3d1
 if "selected_intervenant" not in st.session_state:
     st.session_state["selected_intervenant"] = "nm0000091"
 
@@ -15,8 +64,10 @@ persona = st.session_state.selected_intervenant
 df_inter = df_inter[df_inter['nconst'] == persona]
 
 
-st.header('Intervenants')
-st.divider()
+
+
+st.header('Intervenants', divider="green")
+# st.divider()
 
 # Def 2 col in intervenant
 col1, col2 = st.columns(2)
