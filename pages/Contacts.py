@@ -58,7 +58,7 @@ if selected == "Enfants":
 
 # la page de contact de notre application streamlit
 #--------------------mettre le logo
-left_co, cent_co, last_co = st.columns(3)
+left_co, cent_co, last_co = st.columns([0.2,0.4,0.7])
 with cent_co:
     # le chemin de l'image de notre logo 
     logo = "assets/sapem_logo_final.png"
