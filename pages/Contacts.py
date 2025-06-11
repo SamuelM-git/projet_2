@@ -58,8 +58,6 @@ with left_co:
 # --------------------2eme  column avec descriptive de group-------------------
 with last_co:
     st.write("""
-    Vous avez une question, une suggestion ou un bug à signaler ?  
-    N'hésitez pas à nous contacter !
 
     ### 👥 Notre Équipe Projet
 
@@ -166,7 +164,11 @@ def show_contact_form():
 st.markdown('</div>', unsafe_allow_html=True)
 
 # ----------------------------------------------
+st.write("""
+Vous avez une question, une suggestion ou un bug à signaler ?  
+N'hésitez pas à nous contacter !""")
 
+# --------------------------------------------
 st.divider()
 
 # -----------colonne titre + bouton ----------------
