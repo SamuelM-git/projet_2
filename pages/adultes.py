@@ -1,6 +1,5 @@
-  # Nos packages
+# Nos packages
 import streamlit as st
-import pandas as pd
 import pandas as pd
 import datetime
 # from sklearn.model_selection import train_test_split
