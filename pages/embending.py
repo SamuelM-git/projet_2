@@ -9,7 +9,7 @@ import streamlit as st
 # https://github.com/qdrant/fastembed
 from fastembed import TextEmbedding
 
-# Cosine_similarity -- Compute cosine similarity between samples in X and Y
+# Cosine_similarity -- Compute cosine similarity between samples in X and Y.
 from sklearn.metrics.pairwise import cosine_similarity
 
 
