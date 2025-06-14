@@ -34,8 +34,5 @@ streamlit-option-menu
 #from fastembed import TextEmbedding
 fastembed
 
-#import tqdm as notebook_tqdm, tqdm
-tqdm
-
 # pip install stqdm
 stqdm

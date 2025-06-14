@@ -1,6 +1,5 @@
 import numpy as np
 import pandas as pd
-import tqdm as notebook_tqdm, tqdm
 from stqdm import stqdm
 import streamlit as st
 
@@ -76,12 +75,11 @@ if st.button("apply"):
 
 #Funtion for model
 # For sorme reason tqdm mmust be near the funtion to work...
-from tqdm import tqdm 
 from stqdm import stqdm
 
 
 #Function modele
-def get_sim_embed(documents, name="all-MiniLM-L6-v2"):
+def get_sim_embed(documents, name="BAAI/bge-small-en-v1.5"):
     
     embedding_model = TextEmbedding(model_name=name)
     
@@ -99,7 +97,7 @@ def get_sim_embed(documents, name="all-MiniLM-L6-v2"):
 #Aplication of model and get distances
 if st.button("Apply Distances"):
     if "documents" in st.session_state:
-        distances = get_sim_embed(st.session_state.documents, "all-MiniLM-L6-v2")
+        distances = get_sim_embed(st.session_state.documents, "BAAI/bge-small-en-v1.5")
         st.session_state.distances = distances
         st.write("Distance matrix:")
         st.dataframe(distances)
