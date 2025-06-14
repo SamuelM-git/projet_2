@@ -10,3 +10,6 @@ headless = true
 
 [ui]
 hide_sidebar_nav = true
+
+[browser]
+gatherUsageStats = false
