@@ -32,7 +32,6 @@ streamlit-option-menu
 #FastEmbed is a lightweight, fast, Python library built for embedding generation.
 # https://github.com/qdrant/fastembed
 #from fastembed import TextEmbedding
-fastembed
 
 #import tqdm as notebook_tqdm, tqdm
 tqdm
