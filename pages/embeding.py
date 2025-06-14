@@ -1,6 +1,5 @@
 import numpy as np
 import pandas as pd
-from stqdm import stqdm
 import streamlit as st
 
 
@@ -75,7 +74,6 @@ if st.button("apply"):
 
 #Funtion for model
 # For sorme reason tqdm mmust be near the funtion to work...
-from stqdm import stqdm
 
 
 #Function modele
@@ -84,7 +82,7 @@ def get_sim_embed(documents, name="BAAI/bge-small-en-v1.5"):
     embedding_model = TextEmbedding(model_name=name)
     
     # Show progress while generating embeddings
-    embeddings_generator = list(embedding_model.embed(stqdm(documents, desc="Embedding Documents")))
+    embeddings_generator = list(embedding_model.embed(documents, desc="Embedding Documents"))
     
     # Compute cosine similarity between all embeddings
     # Returns the distance in np.array
