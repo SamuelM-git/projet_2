@@ -5,19 +5,19 @@ import streamlit as st
 
 #FastEmbed is a lightweight, fast, Python library built for embedding generation.
 # https://github.com/qdrant/fastembed
-from fastembed import TextEmbedding
+# from fastembed import TextEmbedding
 
 # Cosine_similarity -- Compute cosine similarity between samples in X and Y.
 from sklearn.metrics.pairwise import cosine_similarity
 
-
+from sentence_transformers import SentenceTransformer
 
 #Load csv films
 df_films = pd.read_csv('data/films_final.csv')
 
 
 
-# Detecter les différents model qu'on peut utiliser
+'''# Detecter les différents model qu'on peut utiliser
 supported_models = (
     pd.DataFrame(TextEmbedding.list_supported_models())
     .sort_values("size_in_GB")
@@ -26,7 +26,7 @@ supported_models = (
 )
 
 # print(supported_models.to_markdown())
-st.write(supported_models)
+st.write(supported_models)'''
 
 
 #Print shape
@@ -75,8 +75,22 @@ if st.button("apply"):
 #Funtion for model
 # For sorme reason tqdm mmust be near the funtion to work...
 
+if st.button("Generate Embeddings"):
+    model = SentenceTransformer("all-MiniLM-L6-v2")
+    embeddings = model.encode(st.session_state.documents, show_progress_bar=True)
+    st.session_state.embeddings = embeddings
+    st.success("Embeddings generated.")
 
-#Function modele
+if st.button("Compute Distances"):
+    if "embeddings" in st.session_state:
+        distances = cosine_similarity(st.session_state.embeddings)
+        df_distances = pd.DataFrame(distances)
+        st.session_state.distances = df_distances
+        st.success("Distances computed.")
+    else:
+        st.warning("Please generate embeddings first.")
+
+'''#Function modele
 def get_sim_embed(documents, name="BAAI/bge-small-en-v1.5"):
     
     embedding_model = TextEmbedding(model_name=name)
@@ -100,7 +114,7 @@ if st.button("Apply Distances"):
         st.write("Distance matrix:")
         st.dataframe(distances)
     else:
-        st.warning("No documents available — click 'Apply' first.")
+        st.warning("No documents available — click 'Apply' first.")'''
 
 
 #Find the recomendations
