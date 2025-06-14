@@ -81,7 +81,7 @@ from stqdm import stqdm
 
 
 #Function modele
-def get_sim_embed(documents, name="BAAI/bge-small-en-v1.5"):
+def get_sim_embed(documents, name="all-MiniLM-L6-v2"):
     
     embedding_model = TextEmbedding(model_name=name)
     
