@@ -34,6 +34,9 @@ streamlit-option-menu
 #from fastembed import TextEmbedding
 
 # pip install stqdm
+stqdm
 
-
+# https://sbert.net
+# from sentence_transformers import SentenceTransformer
+# pip install -U sentence-transformers
 sentence-transformers
