@@ -95,6 +95,8 @@ else :
     
 # st.header("Titre du film : "+titre_du_film, divider="green")
 
+
+
 # ------ Set a background image of the filme --------------------
 # 
 st.markdown(
@@ -127,6 +129,13 @@ right.write("Popularité : "+str(df_inter.popularity.iloc[0]))
 right.write("Année de sortie : "+str(df_inter.startYear.iloc[0]))
 right.write("Genre : "+str(df_inter.genres.iloc[0]).replace(",", ", "))
 right.write("Rating : "+str(df_inter.averageRating.iloc[0])+" sur "+str(df_inter.numVotes.iloc[0])+" votant(s)")
+# Button retour page sugestion
+if right.button("Revenir aux suggestions", use_container_width=True):
+    if st.session_state.selected_film :
+        st.switch_page("pages/standardscaler.py")
+    else:
+        st.switch_page("pages/embeding.py")
+
 #st.write("id film : "+tconst)
 #notre_condition = "tt1399664" in df_intervenant.knownForTitles
 #st.write(notre_condition)

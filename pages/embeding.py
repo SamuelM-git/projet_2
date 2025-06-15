@@ -25,14 +25,61 @@ st.markdown("""
 """, unsafe_allow_html=True)
 #---------------------------------------------------------------
 
+# --------------------------- Bar naviagation ----------------------------------
+from streamlit_option_menu import option_menu
 
-#---------------------Load csv films-----------------------------
+with st.container():
+    selected = option_menu(
+        menu_title=None,
+        options=["Home", "Sugestion", "Enfants", "Contacts"],
+        icons=[],  # No icons
+        default_index=1,
+        orientation="horizontal",
+        styles={
+            "container": {
+                "padding": "0!important",
+                "background-color": "#05335F",
+                "class": "navbar-fixed",  # Add fixed class
+            },
+            "nav-link": {
+                "color": "white",
+                "font-size": "16px",
+                "margin": "0px",
+                "padding": "10px",
+            },
+            "nav-link-selected": {
+                "background-color": "#1B4F72"
+            },
+        }
+    )
+if selected == "Home":
+    st.switch_page("index.py")
+if selected == "Sugestion":
+    selected = 'Sugestion'
+if selected == "Contacts":
+    st.switch_page("pages/Contacts.py")
+if selected == "Enfants":
+    st.switch_page("pages/Enfants.py")
+
+
+
+
+# ----------------------------------------------------
+
+# --------------------------- Main page sugestion -----------------------------
+right, mid, left = st.columns([2,4.3,2])
+
+with mid:
+    if st.button("Revenir aux différentes suggestions", use_container_width=True):
+        st.switch_page("pages/Sugestion.py")
+
+#-------------------------- Load csv films -----------------------------
 df_films = pd.read_csv('data/films_final.csv')
 
 
 
 
-#-----------------------Page title ----------------------------
+#-------------------------- Page title ----------------------------
 st.header("Décrivez le film que vous souhaitez.", divider="green")
 
 # Add sujestions.
@@ -81,7 +128,7 @@ if mid.button("Give me sugestions"):
     df_films.tail(1)
 
 
-#Funtion for model
+# Funtion for model
 # For sorme reason tqdm mmust be near the funtion to work...
 
 
@@ -240,6 +287,7 @@ if "df_sugest" in st.session_state:
             st.image(df_sugest.poster_path[i], width=260)
             if st.button(textwrap.shorten(df_sugest.title[i], width=19,  placeholder="…"), use_container_width=True,  key=f"btn_{i}"):
                 st.session_state.selected_film = df_sugest.tconst[i]
+                st.session_state.df_sugest = df_sugest
                 st.switch_page("pages/film.py")
 
 

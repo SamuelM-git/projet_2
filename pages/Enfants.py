@@ -142,22 +142,24 @@ with tab1:
 
     # If nothing in search box "selected_value' the return of carrousel is
     # controled here:
-    film_id = df_movies_ani[df_movies_ani["title"].str.contains(
-        "Marquis" if not isinstance(selected_value, str) else selected_value)]
+    if isinstance(selected_value, str) and selected_value.strip() != "":
+        film_id = df_movies[df_movies["title"].str.contains(selected_value, case=False, na=False)]
 
-    # Acess the links of poster films
-    df_sugest = recherche(film_id["tconst"].iloc[0], cols)
-    st.header("Sugestion Films Animation", divider="green")
-    colist = ["col1", "col2", "col3", "col4"]
-    colist = st.columns(4)
-    for col, i in enumerate(df_sugest.index):
-        with colist[col % 4]:
-        #st.write(df_movies_ani.primaryName[i])
-            st.image(df_movies_ani.poster_path[i], width=180)
-            if st.button(textwrap.shorten(df_movies_ani.title[i], width=19,  placeholder="…"), use_container_width=True,  key = f"btn_{tab1}_{i}"):
-                st.session_state.selected_film = df_movies_ani.tconst[i]
-                st.switch_page("pages/film.py")
-
+        if not film_id.empty and film_id["title"].iloc[0] in df_movies_ani["title"].values:
+            # Acess the links of poster films
+            df_sugest_enf = recherche(film_id["tconst"].iloc[0], cols)
+            st.header("Sugestion Films Animation", divider="green")
+            colist = ["col1", "col2", "col3", "col4"]
+            colist = st.columns(4)
+            for col, i in enumerate(df_sugest_enf.index):
+                with colist[col % 4]:
+                #st.write(df_movies_ani.primaryName[i])
+                    st.image(df_movies_ani.poster_path[i], width=180)
+                    if st.button(textwrap.shorten(df_movies_ani.title[i], width=19,  placeholder="…"), use_container_width=True,  key = f"btn_{tab1}_{i}"):
+                        st.session_state.selected_film = df_movies_ani.tconst[i]
+                        st.switch_page("pages/film.py")
+        else:
+            st.write("Le film choisi n'est pas un film d'animation.")
 
 
 #------------------------ All films TAB 2-------------------
