@@ -81,6 +81,8 @@ df_films = pd.read_csv('data/films_final.csv')
 
 #-------------------------- Page title ----------------------------
 st.header("Décrivez le film que vous souhaitez.", divider="green")
+st.write('Vous avez une idée précise en tête ? ')
+st.write('Décrivez le type de film que vous avez envie de voir par exemple : "un thriller psychologique dans un univers futuriste avec une héroïne forte", et notre modèle intelligent analysera votre description pour trouver les films les plus proches de vos envies.')
 
 # Add sujestions.
 # Add a row to the data frame.
@@ -100,13 +102,13 @@ sugestion_title = "user_sugestion"
 sugenstion_genres = " "
 # sugestion_words = st.text_input(f'sugestion_words :')
 sugestion_words = " "
-sugestion_overview = st.text_input(f"Sugestion of a films story that you would like to see :")
+sugestion_overview = st.text_input(f"Description:")
 
 
 # --------------------- Start search ----------------------------
 
 right, mid, left = st.columns(3)
-if mid.button("Give me sugestions"):
+if mid.button("Analyser ma description"):
     df_films = addsugestion(sugestion_title, sugenstion_genres, sugestion_words, sugestion_overview)
     st.session_state.df_films = df_films
     # st.write(df_films.title.tail(5))
@@ -132,7 +134,7 @@ if mid.button("Give me sugestions"):
 # For sorme reason tqdm mmust be near the funtion to work...
 
 
-    st.info("Looking for the best films that you are looking for!...")
+    st.info(" À la recherche des meilleurs films faits pour vous!...")
 
     model = SentenceTransformer("all-MiniLM-L6-v2")
     documents = st.session_state.documents
@@ -155,7 +157,7 @@ if mid.button("Give me sugestions"):
     st.session_state.embeddings = np.array(embeddings)
 
     progress_bar.empty()
-    st.success("✅ We found something for you!")
+    st.success("Voilà une suggestion rien que pour vous !")
 
 
     if "embeddings" in st.session_state:
@@ -287,7 +289,7 @@ if "df_sugest" in st.session_state:
             st.image(df_sugest.poster_path[i], width=260)
             if st.button(textwrap.shorten(df_sugest.title[i], width=19,  placeholder="…"), use_container_width=True,  key=f"btn_{i}"):
                 st.session_state.selected_film = df_sugest.tconst[i]
-                st.session_state.df_sugest = df_sugest
+                st.session_state.page_embeding = True
                 st.switch_page("pages/film.py")
 
 

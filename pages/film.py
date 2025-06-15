@@ -130,11 +130,12 @@ right.write("Année de sortie : "+str(df_inter.startYear.iloc[0]))
 right.write("Genre : "+str(df_inter.genres.iloc[0]).replace(",", ", "))
 right.write("Rating : "+str(df_inter.averageRating.iloc[0])+" sur "+str(df_inter.numVotes.iloc[0])+" votant(s)")
 # Button retour page sugestion
+page_embeding = st.session_state.get("page_embeding", False)
 if right.button("Revenir aux suggestions", use_container_width=True):
-    if st.session_state.selected_film :
-        st.switch_page("pages/standardscaler.py")
-    else:
+    if page_embeding :
         st.switch_page("pages/embeding.py")
+    else:
+        st.switch_page("pages/standardscaler.py")
 
 #st.write("id film : "+tconst)
 #notre_condition = "tt1399664" in df_intervenant.knownForTitles

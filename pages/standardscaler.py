@@ -66,8 +66,9 @@ with mid:
 
 
 # Titre de la page
-st.title("Choisir un film")
-st.write('Choisir votre filme favorite dans le genre comedie de production francaise')
+st.header("Film Préféré", divider="green")
+st.write('Choisissez votre film préféré dans le genre comédie française.')
+st.write('Notre système analysera votre sélection pour vous recommander automatiquement des films similaires.')
 
 # Load data frame and show if needed:
 df_movies = pd.read_csv("data/films_final.csv")
