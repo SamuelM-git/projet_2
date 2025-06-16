@@ -6,7 +6,7 @@ import pandas as pd
 import textwrap
 from streamlit_searchbox import st_searchbox
 # from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import StandardScaler  # , MinMaxScaler
+from sklearn.preprocessing import StandardScaler  # , MinMaxScaler,
 from sklearn.neighbors import NearestNeighbors
 
 # ------ set page config ----------
