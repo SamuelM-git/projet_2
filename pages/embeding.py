@@ -124,7 +124,6 @@ if mid.button("Analyser ma description"):
     df_films["intervenants"] = df_films["tconst"].apply(get_intervenants)
     #Treating data
     df_films['all_text'] = (
-        "Intervenants : " + df_films["intervenants"] + ".\n"
         "Genres : " + df_films['genres'] + ".\n"
         "Genres : " + df_films['genres'] + ".\n"
         "Mots_cles : " + df_films['mots_cles'] + ".\n"
@@ -180,7 +179,7 @@ if mid.button("Analyser ma description"):
 
 #Find the recomendations
 # Funtion to find the films returnning a url of the poster
-def get_info_reco(title_input, max_reco = 5) :
+def get_info_reco(title_input, max_reco = 8) :
     data = st.session_state.df_films
     distance_reco = st.session_state.distances
     
@@ -221,9 +220,9 @@ if "df_sugest" in st.session_state:
     df_sugest = st.session_state.df_sugest
     # Acess the links of poster films
     backdrop = df_sugest.backdrop_path.tolist()
-    img1, img2, img3, img4, img5 = backdrop[:6]
+    img1, img2, img3, img4, img5, im6, img7, img8 = backdrop[:9]
     titles = df_sugest['title'].str.upper().tolist()
-    title1, title2, title3, title4, title5 = titles[:6]
+    title1, title2, title3, title4, title5, title6, title7, title8 = titles[:9]
 
 
     # img4title = film_id['title'].iloc[0]
@@ -292,7 +291,7 @@ if "df_sugest" in st.session_state:
     st.header("Sugestion de Films", divider="green")
     colist = ["col1", "col2", "col3", 'col4']
     colist = st.columns(4)
-    for col, i in enumerate(df_sugest.index[:4]):
+    for col, i in enumerate(df_sugest.index[:8]):
         with colist[col % 4]:
         #st.write(df_sugest.primaryName[i])
             st.image(df_sugest.poster_path[i], width=260)
