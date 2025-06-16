@@ -52,7 +52,7 @@ with st.container():
 if selected == "Home":
     st.switch_page("index.py")
 if selected == "Suggestion":
-    st.switch_page("pages/Suggestion.py")
+    st.switch_page("pages/Sugestion.py")
 if selected == "Contacts":
     st.switch_page("pages/Contacts.py")
 if selected == "Enfants":
