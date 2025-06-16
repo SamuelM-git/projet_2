@@ -106,16 +106,25 @@ sugestion_overview = st.text_input(f"Description:")
 
 
 # --------------------- Start search ----------------------------
+# ---- intervenants ------
+def get_intervenants(tconst):
+    matched_names = df_intervenant.loc[
+        df_intervenant["knownForTitles"].str.contains(tconst, na=False), "primaryName"
+    ]
+    return ", ".join(matched_names.tolist())
+#--------
 
 right, mid, left = st.columns(3)
 if mid.button("Analyser ma description"):
     df_films = addsugestion(sugestion_title, sugenstion_genres, sugestion_words, sugestion_overview)
     st.session_state.df_films = df_films
     # st.write(df_films.title.tail(5))
+    df_intervenant = pd.read_csv("data/intervenantes_final.csv")
 
-
+    df_films["intervenants"] = df_films["tconst"].apply(get_intervenants)
     #Treating data
     df_films['all_text'] = (
+        "Intervenants : " + df_films["intervenants"] + ".\n"
         "Genres : " + df_films['genres'] + ".\n"
         "Genres : " + df_films['genres'] + ".\n"
         "Mots_cles : " + df_films['mots_cles'] + ".\n"
