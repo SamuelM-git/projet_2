@@ -131,9 +131,12 @@ right.write("Genre : "+str(df_inter.genres.iloc[0]).replace(",", ", "))
 right.write("Rating : "+str(df_inter.averageRating.iloc[0])+" sur "+str(df_inter.numVotes.iloc[0])+" votant(s)")
 # Button retour page sugestion
 page_embeding = st.session_state.get("page_embeding", False)
+page_enfants = st.session_state.get("page_enfants", False)
 if right.button("Revenir aux suggestions", use_container_width=True):
     if page_embeding :
         st.switch_page("pages/embeding.py")
+    elif page_enfants :
+        st.switch_page("pages/Enfants.py")
     else:
         st.switch_page("pages/standardscaler.py")
 

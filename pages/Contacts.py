@@ -97,7 +97,7 @@ if "message" not in st.session_state:
     st.session_state.message = ""
 # -----------En-tête-----------------------------
 centrleft, center ,centerright= st.columns([0.2, 0.6, 0.2])
-center.title("🎬 Contactez-nous") # le titre de notre formulaire
+center.title("Contactez-nous") # le titre de notre formulaire
 # ----------------------------------------------
 center.write("""
 Vous avez une question, une suggestion ou un bug à signaler ?  
@@ -114,10 +114,9 @@ def show_contact_form():
         <style>
         .popup-style {
             background-color: #f0f2f6;
-            padding: 2rem;
             border-radius: 1rem;
             box-shadow: 0 0 20px rgba(0,0,0,0.2);
-            margin-top: 50px;
+            margin-top: 0px;
         }
         </style>
         """,
@@ -130,7 +129,7 @@ def show_contact_form():
     # centrons avec les colonnes 
     st.markdown('<div class="popup-style">', unsafe_allow_html=True)
     with st.form(key="formulaire_popup"):
-        st.markdown("### 📝 Envoyer un message")
+        st.markdown("###  Envoyer un message")
         st.session_state.nom = st.text_input("Nom", value=st.session_state.nom)
         st.session_state.email = st.text_input("Email", value=st.session_state.email)
         st.session_state.message = st.text_area("Message", value=st.session_state.message)

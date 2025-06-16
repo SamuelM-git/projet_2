@@ -77,7 +77,7 @@ df_movies_filt = df_movies[(df_movies['startYear'] > 2023) & (df_movies['average
 df_movies_filt = df_movies_filt.sort_values(by=['popularity'], ascending=False)
 backdrop = df_movies_filt.backdrop_path.tolist()
 col1, col2, col3, col4, col5, col6 = backdrop[:6]
-titles = df_movies_filt['title'].tolist()
+titles = df_movies_filt['title'].str.upper().tolist()
 title1, title2, title3, title4, title5, title6 = titles[:6]
 
 

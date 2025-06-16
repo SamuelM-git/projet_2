@@ -53,6 +53,7 @@ if selected == "Enfants":
 # ----------------------------------------------------
 # -------------------------Reset session_state ----------------
 st.session_state.page_embeding = False
+st.session_state.page_enfants = False
 
 # --------------------Buttons standardscaler --- embeding ----------------------
 right,mid, left = st.columns([3.3,8,3.3])

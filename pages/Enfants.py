@@ -157,6 +157,7 @@ with tab1:
                     st.image(df_movies_ani.poster_path[i], width=180)
                     if st.button(textwrap.shorten(df_movies_ani.title[i], width=19,  placeholder="…"), use_container_width=True,  key = f"btn_{tab1}_{i}"):
                         st.session_state.selected_film = df_movies_ani.tconst[i]
+                        st.session_state.page_enfants = True
                         st.switch_page("pages/film.py")
         else:
             st.write("Le film choisi n'est pas un film d'animation.")
@@ -173,6 +174,7 @@ with tab2:
             st.image(df_movies_ani.poster_path[i], width=150)
             if st.button(textwrap.shorten(df_movies_ani.title[i], width=19,  placeholder="…"), use_container_width=True,  key=f"btn_{i}"):
                 st.session_state.selected_film = df_movies_ani.tconst[i]
+                st.session_state.page_enfants = True
                 st.switch_page("pages/film.py")
 
 

@@ -144,7 +144,7 @@ if isinstance(selected_value, str) and selected_value.strip() != "":
         df_sugest = recherche(film_id["tconst"].iloc[0], cols)
         backdrop = df_sugest.backdrop_path.tolist()
         img1, img2, img3, img4, img5 = backdrop[:6]
-        titles = df_sugest['title'].tolist()
+        titles = df_sugest['title'].str.upper().tolist()
         title1, title2, title3, title4, title5 = titles[:6]
 
 
