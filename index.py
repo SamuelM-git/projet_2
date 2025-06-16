@@ -28,7 +28,7 @@ left, midel, right = st.columns([1,1.2,1])
 with midel.container():
     selected = option_menu(
         menu_title=None,
-        options=["Home", "Sugestion", "Enfants", "Contacts"],
+        options=["Home", "Suggestion", "Enfants", "Contacts"],
         icons=[],  # No icons
         default_index=0,
         orientation="horizontal",
@@ -52,7 +52,7 @@ with midel.container():
 
 if selected == "Home":
     selected = "Home"
-if selected == "Sugestion":
+if selected == "Suggestion":
     st.switch_page("pages/Sugestion.py")
 if selected == "Contacts":
     st.switch_page("pages/Contacts.py")

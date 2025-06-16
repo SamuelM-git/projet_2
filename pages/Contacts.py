@@ -20,7 +20,7 @@ st.markdown("""
 with st.container():
     selected = option_menu(
         menu_title=None,
-        options=["Home", "Sugestion", "Enfants", "Contacts"],
+        options=["Home", "Suggestion", "Enfants", "Contacts"],
         icons=[],  # No icons
         default_index=3,
         orientation="horizontal",
@@ -44,7 +44,7 @@ with st.container():
 
 if selected == "Home":
     st.switch_page("index.py")
-if selected == "Sugestion":
+if selected == "Suggestion":
     st.switch_page("pages/Sugestion.py")
 if selected == "Contacts":
     selected = "Contacts"

@@ -24,7 +24,7 @@ from streamlit_option_menu import option_menu
 with st.container():
     selected = option_menu(
         menu_title=None,
-        options=["Home", "Sugestion", "Enfants", "Contacts"],
+        options=["Home", "Suggestion", "Enfants", "Contacts"],
         icons=[],  # No icons
         default_index=1,
         orientation="horizontal",
@@ -47,8 +47,8 @@ with st.container():
     )
 if selected == "Home":
     st.switch_page("index.py")
-if selected == "Sugestion":
-    selected = 'Sugestion'
+if selected == "Suggestion":
+    selected = 'Suggestion'
 if selected == "Contacts":
     st.switch_page("pages/Contacts.py")
 if selected == "Enfants":
@@ -58,7 +58,7 @@ if selected == "Enfants":
 right, mid, left = st.columns([2,4.3,2])
 
 with mid:
-    if st.button("Revenir sur le diferent Sugestion", use_container_width=True):
+    if st.button("Revenir sur le diferent Suggestion", use_container_width=True):
         st.switch_page("pages/Sugestion.py")
 
 
